@@ -127,7 +127,21 @@
   .chip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; font-weight: var(--w-sub); }
   .chip.fav-chip { display: inline-flex; align-items: center; gap: 6px; }
   .chip.fav-chip svg { width: 16px; height: 16px; }
-  .chip:focus-visible, .heart:focus-visible, .btn-random:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+  .chip:focus-visible, .heart:focus-visible, .btn-random:focus-visible,
+  .detail-btn:focus-visible, .detail-close:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+  .detail-btn {
+    align-self: flex-start;
+    font-size: .88rem;
+    font-weight: var(--w-sub);
+    color: var(--blue-deep);
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .detail-btn:hover { color: var(--blue); }
   .count { margin-left: auto; color: var(--n400); font-weight: var(--w-small); font-size: .95rem; }
 
   /* Random pick */
@@ -571,6 +585,7 @@
         <h3>${m.th}</h3>
         <div class="en">${m.en}</div>
         <p class="desc">${m.desc}</p>
+        <button class="detail-btn" type="button" data-id="${m.id}">ดูส่วนประกอบ</button>
       </div>
     </article>`).join('');
 
@@ -643,6 +658,7 @@
         <h3>${m.th}</h3>
         <div class="en">${m.en}</div>
         <p class="desc">${m.desc}</p>
+        <button class="detail-btn" type="button" data-id="${m.id}">ดูส่วนประกอบ</button>
       </div>
       ${heartBtn(m)}`;
     result.classList.remove('pop');
@@ -678,19 +694,24 @@
 
   detailClose.addEventListener('click', closeDetail);
   detail.addEventListener('click', e => {
-    if (e.target === detail) closeDetail(); // clicked backdrop
+    if (e.target !== detail) return; // click landed on dialog content, not the dialog element itself
+    // e.target === detail happens both for a real backdrop click and for a click on the
+    // dialog's own padding, so compare the click position against the dialog's box.
+    const r = detail.getBoundingClientRect();
+    const insideBox = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+    if (!insideBox) closeDetail();
   });
   detail.addEventListener('close', () => { detailReturnFocus = null; });
 
   grid.addEventListener('click', e => {
     if (e.target.closest('[data-fav]')) return;
     const card = e.target.closest('.card');
-    if (card) openDetail(card.dataset.id, card);
+    if (card) openDetail(card.dataset.id, card.querySelector('.detail-btn'));
   });
   result.addEventListener('click', e => {
     if (e.target.closest('[data-fav]')) return;
-    const art = e.target.closest('.result-art');
-    if (art) openDetail(art.dataset.id, art);
+    const trigger = e.target.closest('.result-art, .detail-btn');
+    if (trigger) openDetail(trigger.dataset.id, result.querySelector('.detail-btn'));
   });
 
   chips.addEventListener('click', e => {
