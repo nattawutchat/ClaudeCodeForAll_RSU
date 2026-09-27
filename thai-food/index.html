@@ -354,6 +354,16 @@
   .member-status.success { color: var(--color-deep-forest); }
   .member-status.error { color: #B0481C; }
 
+  .photo-credits {
+    max-width: 640px;
+    margin: 24px auto 0;
+    padding: 0 20px;
+    font-size: .8rem;
+    color: var(--color-warm-gray);
+    line-height: 1.6;
+  }
+  .photo-credits a { color: inherit; }
+
   footer {
     border-top: 1px solid var(--color-warm-gray);
     background: var(--color-cream-canvas);
@@ -389,7 +399,7 @@
     <div>
       <span class="eyebrow">ชวนชิมอาหารไทย 4 ภาค</span>
       <h1>อร่อยทั่วไทย</h1>
-      <p>รวม 23 เมนูขึ้นชื่อจากเหนือจรดใต้ คิดไม่ออกว่าจะกินอะไรก็กดสุ่มได้เลย</p>
+      <p>รวม <span class="menu-total">23</span> เมนูขึ้นชื่อจากเหนือจรดใต้ คิดไม่ออกว่าจะกินอะไรก็กดสุ่มได้เลย</p>
     </div>
     <div class="hero-art" aria-hidden="true">
       <svg viewBox="0 0 320 260">
@@ -421,7 +431,7 @@
   <section class="random" aria-label="สุ่มเมนูวันนี้">
     <div class="random-intro">
       <h2>วันนี้กินอะไรดี</h2>
-      <p>สุ่มจากทั้ง 23 เมนู กดซ้ำได้จนเจอเมนูที่ใช่</p>
+      <p>สุ่มจากทั้ง <span class="menu-total">23</span> เมนู กดซ้ำได้จนเจอเมนูที่ใช่</p>
       <button class="btn-random" id="btn-random" type="button">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
         สุ่มเมนูวันนี้
@@ -468,6 +478,14 @@
     </form>
     <p class="member-status" id="member-status" aria-live="polite"></p>
   </div>
+  <p class="photo-credits">
+    ภาพเมนูบางส่วนใช้ภายใต้สัญญาอนุญาต Creative Commons Attribution-ShareAlike จาก Wikimedia Commons และ Flickr:
+    แคบหมู: "Pork scratchings" โดย Ewan Munro (CC BY-SA 2.0) — <a href="https://commons.wikimedia.org/wiki/File:Pork_scratchings.jpg" target="_blank" rel="noopener">commons.wikimedia.org</a> ·
+    แจ่วบอง: "Jeow Bong - Laotian chili dip" โดย Isan1985 (CC BY-SA 4.0) — <a href="https://commons.wikimedia.org/w/index.php?curid=80345966" target="_blank" rel="noopener">commons.wikimedia.org</a> ·
+    ก้อยกุ้ง: "SpicyRawShrimpSalad" โดย Npuntanee (CC BY-SA 4.0) — <a href="https://commons.wikimedia.org/wiki/File:SpicyRawShrimpSalad.jpg" target="_blank" rel="noopener">commons.wikimedia.org</a> ·
+    ผัดกะเพรา: "Pad kra pao gai" โดย Haydn Blackey (CC BY-SA 2.0) — <a href="https://www.flickr.com/photos/54549113@N00/52693327724" target="_blank" rel="noopener">flickr.com</a> ·
+    แกงคั่วสับปะรด: "Pineapple curry" โดย Sergiy Galyonkin (CC BY-SA 2.0) — <a href="https://www.flickr.com/photos/22974618@N00/52179710622" target="_blank" rel="noopener">flickr.com</a>
+  </p>
 </section>
 
 <footer>
@@ -503,6 +521,9 @@
     { id: 'nam-prik-ong', th: 'น้ำพริกอ่อง', en: 'Nam Prik Ong', region: 'north', spice: 1, soup: '#E5484D', top: '#10A4B8', plate: true, photo: 'images/nam-prik-ong.png',
       ingredients: ['หมูสับ', 'มะเขือเทศ', 'พริกแห้ง', 'กระเทียม', 'หอมแดง', 'กะปิ', 'เกลือ', 'น้ำปลา', 'ผักสดสำหรับจิ้ม', 'แคบหมู'],
       desc: 'พริกแห้ง หอมแดง กระเทียม และกะปิโขลกรวมกัน ผัดกับหมูสับและมะเขือเทศจนข้น รสเปรี้ยวอมหวาน กินกับผักสดและแคบหมู' },
+    { id: 'kaeb-moo', th: 'แคบหมู', en: 'Kaeb Moo', region: 'north', spice: 0, soup: '#FFE8DA', top: '#B0481C', plate: true, photo: 'images/kaeb-moo.jpg',
+      ingredients: ['หนังหมู', 'เกลือ', 'น้ำมันสำหรับทอด'],
+      desc: 'หนังหมูทอดกรอบ เป็นของว่างและเครื่องเคียงคู่น้ำพริกของภาคเหนือ' },
     // Isan
     { id: 'som-tam', th: 'ส้มตำ', en: 'Som Tam', region: 'isan', spice: 3, soup: '#D9F2F6', top: '#10A4B8', plate: true, photo: 'images/som-tam.png',
       ingredients: ['มะละกอดิบสับเส้น', 'พริกขี้หนู', 'กระเทียม', 'มะเขือเทศ', 'ถั่วฝักยาว', 'มะนาว', 'น้ำปลา', 'น้ำตาลปี๊บ', 'กุ้งแห้ง', 'ถั่วลิสงคั่ว'],
@@ -519,6 +540,12 @@
     { id: 'soup-nor-mai', th: 'ซุปหน่อไม้', en: 'Soup Nor Mai', region: 'isan', spice: 2, soup: '#10A4B8', top: '#FFF1CC', plate: true, photo: 'images/soup-nor-mai.png',
       ingredients: ['หน่อไม้ต้มฉีกฝอย', 'น้ำใบย่านาง', 'พริกป่น', 'ข้าวคั่ว', 'งาคั่ว', 'น้ำปลาร้า', 'ผักชีลาว'],
       desc: 'หน่อไม้ต้มฉีกฝอย คลุกน้ำใบย่านาง พริกป่น ข้าวคั่ว และงาคั่ว' },
+    { id: 'jaew-bong', th: 'แจ่วบอง', en: 'Jaew Bong', region: 'isan', spice: 3, soup: '#B0481C', top: '#E5484D', plate: true, photo: 'images/jaew-bong.jpg',
+      ingredients: ['พริกแห้งคั่ว', 'หนังควายหรือหนังหมูแห้ง', 'กระเทียม', 'หอมแดง', 'น้ำปลาร้า', 'น้ำตาลปี๊บ', 'มะขามเปียก'],
+      desc: 'พริกแห้งคั่วโขลกกับกระเทียม หอมแดง และน้ำปลาร้าจนข้นเหนียว รสเผ็ดเค็มหวานเข้มข้น กินคู่ข้าวเหนียวหรือแนมกับผัก' },
+    { id: 'koi-goong', th: 'ก้อยกุ้ง', en: 'Koi Goong', region: 'isan', spice: 3, soup: '#D9F2F6', top: '#10A4B8', plate: true, photo: 'images/koi-goong.jpg',
+      ingredients: ['กุ้งสดหรือกุ้งลวก', 'พริกป่น', 'ข้าวคั่ว', 'น้ำปลา', 'มะนาว', 'หอมแดงซอย', 'ต้นหอม', 'สะระแหน่'],
+      desc: 'กุ้งสดคลุกพริกป่น ข้าวคั่ว มะนาว และน้ำปลา รสจัดจ้านแบบลาบ เผ็ดเปรี้ยวสดชื่น' },
     // Central
     { id: 'tom-yum-goong', th: 'ต้มยำกุ้ง', en: 'Tom Yum Goong', region: 'central', spice: 2, soup: '#FB7A3C', top: '#F2589B', photo: 'images/tom-yum-goong.png',
       ingredients: ['กุ้ง', 'ข่า', 'ตะไคร้', 'ใบมะกรูด', 'พริกขี้หนู', 'มะนาว', 'น้ำปลา', 'เห็ดฟาง', 'น้ำพริกเผา', 'ผักชี'],
@@ -538,6 +565,9 @@
     { id: 'massaman', th: 'แกงมัสมั่น', en: 'Massaman Curry', region: 'central', spice: 1, soup: '#8A6212', top: '#FFB300', photo: 'images/massaman.png',
       ingredients: ['เนื้อวัวหรือไก่', 'พริกแกงมัสมั่น', 'กะทิ', 'มันฝรั่ง', 'หอมแดง', 'ถั่วลิสงคั่ว', 'น้ำมะขามเปียก', 'น้ำตาลปี๊บ', 'น้ำปลา', 'ใบกระวาน'],
       desc: 'แกงกะทิรสหวานมันออกเปรี้ยวเค็มเล็กน้อย เคี่ยวเนื้อกับมันฝรั่งและถั่วลิสงจนเปื่อยนุ่ม หอมเครื่องเทศแบบมัสมั่น' },
+    { id: 'pad-kra-pao', th: 'ผัดกะเพรา', en: 'Pad Kra Pao', region: 'central', spice: 2, soup: '#FFE8DA', top: '#B0481C', plate: true, photo: 'images/pad-kra-pao.jpg',
+      ingredients: ['เนื้อสับ (หมูหรือไก่)', 'ใบกะเพรา', 'พริกขี้หนู', 'กระเทียม', 'น้ำปลา', 'ซีอิ๊วขาว', 'น้ำตาล', 'ไข่ดาว'],
+      desc: 'เนื้อสับผัดกับใบกะเพราและพริกขี้หนูจนหอมฉุน รสเผ็ดเค็ม กินคู่ข้าวสวยและไข่ดาว' },
     // South
     { id: 'tai-pla', th: 'แกงไตปลา', en: 'Gaeng Tai Pla', region: 'south', spice: 3, soup: '#8A6212', top: '#10A4B8', photo: 'images/tai-pla.png',
       ingredients: ['ไตปลาหมัก', 'พริกแกงไตปลา', 'ปลาหรือกุ้ง', 'หน่อไม้ดอง', 'ฟักทอง', 'ถั่วฝักยาว', 'มะเขือเปราะ'],
@@ -556,7 +586,10 @@
       desc: 'สะตอผัดกับกะปิและพริกแกง นิยมใส่กุ้งหรือหมู กลิ่นหอมเฉพาะตัวของสะตอ' },
     { id: 'moo-hong', th: 'หมูฮ้อง', en: 'Moo Hong', region: 'south', spice: 0, soup: '#B0481C', top: '#FFB300', plate: true, photo: 'images/moo-hong.png',
       ingredients: ['หมูสามชั้น', 'กระเทียม', 'รากผักชี', 'พริกไทย', 'ซีอิ๊วดำ', 'น้ำตาลปี๊บ', 'อบเชย', 'โป๊ยกั๊ก', 'ไข่ต้ม'],
-      desc: 'หมูสามชั้นเคี่ยวซีอิ๊วดำและน้ำตาลปี๊บกับกระเทียม รากผักชี และเครื่องเทศจนนุ่มเข้มสีน้ำตาล อาหารขึ้นชื่อของภูเก็ต' }
+      desc: 'หมูสามชั้นเคี่ยวซีอิ๊วดำและน้ำตาลปี๊บกับกระเทียม รากผักชี และเครื่องเทศจนนุ่มเข้มสีน้ำตาล อาหารขึ้นชื่อของภูเก็ต' },
+    { id: 'gaeng-kua-sapparot', th: 'แกงคั่วสับปะรด', en: 'Gaeng Kua Sapparot', region: 'south', spice: 2, soup: '#FFB300', top: '#10A4B8', photo: 'images/gaeng-kua-sapparot.jpg',
+      ingredients: ['สับปะรด', 'พริกแกงคั่ว', 'กะทิ', 'กุ้งหรือหอยแมลงภู่', 'ใบมะกรูด', 'น้ำปลา', 'น้ำตาลปี๊บ'],
+      desc: 'แกงกะทิรสจัดจ้าน ใส่สับปะรดหั่นชิ้นให้ความหวานอมเปรี้ยวตัดเผ็ด นิยมใส่กุ้งหรือหอยแมลงภู่' }
   ];
 
   const MENU_BY_ID = Object.fromEntries(MENUS.map(m => [m.id, m]));
@@ -619,6 +652,8 @@
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...favorites])); } catch (e) { /* storage unavailable */ }
   }
   const favorites = loadFavorites();
+
+  document.querySelectorAll('.menu-total').forEach(el => { el.textContent = MENUS.length; });
 
   const grid = document.getElementById('grid');
   const chips = document.getElementById('chips');
