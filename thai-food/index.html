@@ -252,6 +252,58 @@
   }
   main { padding-bottom: 64px; }
 
+  /* Detail dialog */
+  .card { cursor: pointer; }
+  .detail {
+    border: none;
+    border-radius: var(--radius);
+    padding: 28px;
+    max-width: 480px;
+    width: calc(100% - 32px);
+    max-height: calc(100% - 64px);
+    margin: auto;
+    background: var(--surface);
+    color: var(--n800);
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  }
+  .detail::backdrop { background: rgba(15,23,34,.55); }
+  .detail-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--n100);
+    background: var(--surface);
+    color: var(--n600);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background .2s, color .2s;
+  }
+  .detail-close:hover { background: var(--blue-tint); color: var(--blue-deep); }
+  .detail-art { display: flex; justify-content: center; margin-bottom: 16px; }
+  .detail-art svg, .detail-art .dish-photo { width: 220px; height: 160px; }
+  .detail-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+  .detail-body h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 2px; }
+  .detail-body .en { margin-bottom: 10px; }
+  .detail-body .desc { margin-bottom: 18px; }
+  .detail-body h4 { font-size: 1rem; font-weight: var(--w-sub); color: var(--n600); margin-bottom: 10px; }
+  .ingredients { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .ingredients li {
+    font-size: .9rem;
+    font-weight: var(--w-small);
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: var(--n50);
+    border: 1px solid var(--n100);
+    color: var(--n600);
+  }
+  @media (max-width: 520px) {
+    .detail { padding: 22px; }
+    .detail-art svg, .detail-art .dish-photo { width: 180px; height: 130px; }
+  }
+
   footer {
     border-top: 1px solid var(--n100);
     background: var(--surface);
@@ -339,6 +391,22 @@
   <p class="empty-fav" id="empty-fav" hidden>ยังไม่มีเมนูโปรด กดรูปหัวใจบนการ์ดเพื่อเก็บไว้ได้เลย</p>
 </main>
 
+<dialog class="detail" id="detail">
+  <button class="detail-close" id="detail-close" type="button" aria-label="ปิดหน้าต่างรายละเอียด">&times;</button>
+  <div class="detail-art" id="detail-art"></div>
+  <div class="detail-body">
+    <div class="detail-top">
+      <span class="tag" id="detail-region"></span>
+      <span class="spice" id="detail-spice"></span>
+    </div>
+    <h3 id="detail-th"></h3>
+    <div class="en" id="detail-en"></div>
+    <p class="desc" id="detail-desc"></p>
+    <h4>ส่วนประกอบ</h4>
+    <ul class="ingredients" id="detail-ingredients"></ul>
+  </div>
+</dialog>
+
 <footer>
   <div class="wrap">จัดทำโดย วิศวกรรีพอร์ต</div>
 </footer>
@@ -355,47 +423,67 @@
   const MENUS = [
     // North
     { id: 'khao-soi', th: 'ข้าวซอย', en: 'Khao Soi', region: 'north', spice: 2, soup: '#FFB300', top: '#FB7A3C', photo: 'images/khao-soi.png',
+      ingredients: ['เส้นบะหมี่ไข่', 'เนื้อไก่หรือเนื้อวัว', 'น้ำพริกแกงข้าวซอย', 'กะทิ', 'ผงขมิ้น', 'หอมแดง', 'กระเทียม', 'น้ำปลา', 'น้ำตาลปี๊บ', 'ผักกาดดอง', 'มะนาว', 'เส้นบะหมี่ทอดกรอบ'],
       desc: 'บะหมี่ไข่ในน้ำแกงกะทิหอมเครื่องแกง โรยเส้นทอดกรอบ กินคู่ผักกาดดอง หอมแดง และมะนาว' },
     { id: 'hang-lay', th: 'แกงฮังเล', en: 'Gaeng Hang Lay', region: 'north', spice: 1, soup: '#B0481C', top: '#FFB300', photo: 'images/hang-lay.png',
+      ingredients: ['หมูสามชั้น', 'ผงฮังเล', 'ขิงซอย', 'กระเทียม', 'หอมแดง', 'ถั่วลิสงคั่ว', 'ซีอิ๊วดำ', 'น้ำตาลปี๊บ', 'น้ำมะขามเปียก'],
       desc: 'แกงหมูสามชั้นแบบไม่ใส่กะทิ รสเข้มจากผงฮังเล ใส่ขิงซอยและถั่วลิสง เคี่ยวจนหมูนุ่ม' },
     { id: 'nam-prik-noom', th: 'น้ำพริกหนุ่ม', en: 'Nam Prik Noom', region: 'north', spice: 2, soup: '#D9F2F6', top: '#10A4B8', plate: true,
+      ingredients: ['พริกหนุ่มย่าง', 'หอมแดงย่าง', 'กระเทียมย่าง', 'เกลือ', 'กะปิ', 'ผักสดสำหรับจิ้ม', 'แคบหมู'],
       desc: 'พริกหนุ่ม หอมแดง และกระเทียมย่างไฟ นำมาโขลกรวมกัน กินกับผักนึ่งและแคบหมู' },
     { id: 'sai-oua', th: 'ไส้อั่ว', en: 'Sai Oua', region: 'north', spice: 2, soup: '#FFE8DA', top: '#B0481C', plate: true,
+      ingredients: ['หมูสับ', 'ไส้หมูสำหรับบรรจุ', 'พริกแกงไส้อั่ว', 'ตะไคร้ซอย', 'ใบมะกรูดซอย', 'ผักชี', 'เกลือ'],
       desc: 'ไส้กรอกเมืองเหนือ ยัดหมูสับคลุกพริกแกง ตะไคร้ และใบมะกรูด แล้วนำไปย่างจนหอม' },
     { id: 'khanom-jeen-nam-ngiao', th: 'ขนมจีนน้ำเงี้ยว', en: 'Khanom Jeen Nam Ngiao', region: 'north', spice: 1, soup: '#E5484D', top: '#FFB300',
+      ingredients: ['ขนมจีน', 'หมูสับ', 'กระดูกหมู', 'มะเขือเทศ', 'ดอกงิ้วแห้ง', 'ถั่วเน่าแผ่น', 'พริกแกงน้ำเงี้ยว'],
       desc: 'ขนมจีนราดน้ำเงี้ยวรสเข้ม ใส่หมูสับ กระดูกหมู มะเขือเทศ และดอกงิ้วแห้ง' },
     // Isan
     { id: 'som-tam', th: 'ส้มตำ', en: 'Som Tam', region: 'isan', spice: 3, soup: '#D9F2F6', top: '#10A4B8', plate: true,
+      ingredients: ['มะละกอดิบสับเส้น', 'พริกขี้หนู', 'กระเทียม', 'มะเขือเทศ', 'ถั่วฝักยาว', 'มะนาว', 'น้ำปลา', 'น้ำตาลปี๊บ', 'กุ้งแห้ง', 'ถั่วลิสงคั่ว'],
       desc: 'มะละกอดิบสับเส้นตำกับพริก กระเทียม มะนาว น้ำปลา และมะเขือเทศ รสเปรี้ยวเผ็ดสดชื่น' },
     { id: 'larb', th: 'ลาบ', en: 'Larb', region: 'isan', spice: 3, soup: '#C2CBD6', top: '#10A4B8', plate: true,
+      ingredients: ['เนื้อสับ (หมูหรือไก่)', 'ข้าวคั่ว', 'พริกป่น', 'น้ำปลา', 'มะนาว', 'หอมแดงซอย', 'ต้นหอม', 'สะระแหน่'],
       desc: 'เนื้อสับคลุกข้าวคั่ว พริกป่น มะนาว น้ำปลา และสมุนไพรอย่างสะระแหน่ กินกับข้าวเหนียว' },
     { id: 'gai-yang', th: 'ไก่ย่าง', en: 'Gai Yang', region: 'isan', spice: 0, soup: '#FFF1CC', top: '#B0481C', plate: true,
+      ingredients: ['ไก่ทั้งตัวหรือน่องไก่', 'กระเทียม', 'รากผักชี', 'พริกไทย', 'ซีอิ๊วขาว', 'น้ำปลา', 'น้ำตาลปี๊บ'],
       desc: 'ไก่หมักกระเทียม รากผักชี และพริกไทย ย่างบนเตาถ่าน กินคู่ข้าวเหนียวและน้ำจิ้มแจ่ว' },
     { id: 'tom-saep', th: 'ต้มแซ่บ', en: 'Tom Saep', region: 'isan', spice: 3, soup: '#FFE8DA', top: '#10A4B8',
+      ingredients: ['กระดูกหมูอ่อน', 'ข่า', 'ตะไคร้', 'ใบมะกรูด', 'พริกป่น', 'น้ำปลาร้า', 'มะนาว', 'ผักชี', 'ต้นหอม'],
       desc: 'ต้มรสเปรี้ยวเผ็ด หอมข่า ตะไคร้ ใบมะกรูด เผ็ดจากพริกป่น นิยมใส่กระดูกหมูอ่อน' },
     { id: 'soup-nor-mai', th: 'ซุปหน่อไม้', en: 'Soup Nor Mai', region: 'isan', spice: 2, soup: '#10A4B8', top: '#FFF1CC', plate: true,
+      ingredients: ['หน่อไม้ต้มฉีกฝอย', 'น้ำใบย่านาง', 'พริกป่น', 'ข้าวคั่ว', 'งาคั่ว', 'น้ำปลาร้า', 'ผักชีลาว'],
       desc: 'หน่อไม้ต้มฉีกฝอย คลุกน้ำใบย่านาง พริกป่น ข้าวคั่ว และงาคั่ว' },
     // Central
     { id: 'tom-yum-goong', th: 'ต้มยำกุ้ง', en: 'Tom Yum Goong', region: 'central', spice: 2, soup: '#FB7A3C', top: '#F2589B', photo: 'images/tom-yum-goong.png',
+      ingredients: ['กุ้ง', 'ข่า', 'ตะไคร้', 'ใบมะกรูด', 'พริกขี้หนู', 'มะนาว', 'น้ำปลา', 'เห็ดฟาง', 'น้ำพริกเผา', 'ผักชี'],
       desc: 'ต้มกุ้งกับข่า ตะไคร้ ใบมะกรูด พริก และมะนาว ได้รสเปรี้ยว เผ็ด หอมสมุนไพรครบในชามเดียว' },
     { id: 'green-curry', th: 'แกงเขียวหวาน', en: 'Green Curry', region: 'central', spice: 2, soup: '#10A4B8', top: '#8B5CF6',
+      ingredients: ['พริกแกงเขียวหวาน', 'กะทิ', 'เนื้อไก่', 'มะเขือเปราะ', 'มะเขือพวง', 'ใบโหระพา', 'ใบมะกรูด', 'น้ำปลา', 'น้ำตาลปี๊บ'],
       desc: 'แกงกะทิกับพริกแกงเขียว ใส่มะเขือเปราะ ใบโหระพา นิยมใช้ไก่ ทานคู่ข้าวสวยหรือขนมจีน' },
     { id: 'pad-thai', th: 'ผัดไทย', en: 'Pad Thai', region: 'central', spice: 0, soup: '#FFF1CC', top: '#FB7A3C', plate: true, photo: 'images/pad-thai.png',
+      ingredients: ['เส้นจันท์', 'กุ้งสด', 'เต้าหู้แข็ง', 'กุ้งแห้ง', 'ไข่ไก่', 'ถั่วงอก', 'กุยช่าย', 'ถั่วลิสงคั่วป่น', 'น้ำมะขามเปียก', 'หัวไชโป๊ว'],
       desc: 'เส้นจันท์ผัดซอสมะขามเปียกและน้ำตาลปี๊บ ใส่เต้าหู้ กุ้งแห้ง ไข่ ถั่วงอก กุยช่าย โรยถั่วลิสง' },
     { id: 'tom-kha-gai', th: 'ต้มข่าไก่', en: 'Tom Kha Gai', region: 'central', spice: 1, soup: '#FFF1CC', top: '#10A4B8',
+      ingredients: ['เนื้อไก่', 'กะทิ', 'ข่า', 'ตะไคร้', 'ใบมะกรูด', 'เห็ดฟาง', 'มะนาว', 'น้ำปลา', 'พริกขี้หนูบุบ', 'ผักชี'],
       desc: 'ต้มไก่ในกะทิกับข่า ตะไคร้ และใบมะกรูด รสเปรี้ยว เค็ม มัน หอมข่า' },
     { id: 'panang', th: 'พะแนง', en: 'Panang', region: 'central', spice: 1, soup: '#FB7A3C', top: '#10A4B8', plate: true,
+      ingredients: ['พริกแกงพะแนง', 'กะทิ', 'เนื้อสัตว์ (หมูหรือไก่)', 'ใบมะกรูดซอย', 'น้ำปลา', 'น้ำตาลปี๊บ', 'ถั่วลิสงป่น'],
       desc: 'เนื้อสัตว์เคี่ยวกับกะทิและพริกแกงพะแนงจนน้ำขลุกขลิก โรยใบมะกรูดซอย รสหวานมัน' },
     // South
     { id: 'tai-pla', th: 'แกงไตปลา', en: 'Gaeng Tai Pla', region: 'south', spice: 3, soup: '#8A6212', top: '#10A4B8',
+      ingredients: ['ไตปลาหมัก', 'พริกแกงไตปลา', 'ปลาหรือกุ้ง', 'หน่อไม้ดอง', 'ฟักทอง', 'ถั่วฝักยาว', 'มะเขือเปราะ'],
       desc: 'แกงรสจัดจากไตปลาหมัก ใส่ผักหลายชนิดอย่างหน่อไม้และฟักทอง เผ็ดร้อนแบบปักษ์ใต้' },
     { id: 'khao-yam', th: 'ข้าวยำ', en: 'Khao Yam', region: 'south', spice: 0, soup: '#EEE7FD', top: '#10A4B8', plate: true,
+      ingredients: ['ข้าวสวย', 'น้ำบูดู', 'มะพร้าวคั่ว', 'กุ้งแห้งป่น', 'ตะไคร้ซอย', 'ใบมะกรูดซอย', 'ถั่วงอก', 'ดอกอัญชัน', 'มะนาว', 'พริกป่น'],
       desc: 'ข้าวคลุกน้ำบูดู กับผักสดซอย มะพร้าวคั่ว และกุ้งแห้งป่น พริกป่นแยกให้เติมเองตามชอบ' },
     { id: 'gaeng-leung', th: 'แกงเหลือง', en: 'Gaeng Leung', region: 'south', spice: 3, soup: '#FFB300', top: '#10A4B8',
+      ingredients: ['ขมิ้นสด', 'พริกแห้ง', 'กระเทียม', 'หอมแดง', 'กะปิ', 'ปลาหรือกุ้ง', 'หน่อไม้ดองหรือมะละกอ', 'น้ำมะขามเปียก'],
       desc: 'แกงส้มแบบใต้ สีเหลืองจากขมิ้น ไม่ใส่กะทิ รสเปรี้ยวเผ็ดเค็ม มักใส่ปลากับหน่อไม้ดองหรือมะละกอ' },
     { id: 'kua-kling', th: 'คั่วกลิ้ง', en: 'Kua Kling', region: 'south', spice: 3, soup: '#B0481C', top: '#10A4B8', plate: true,
+      ingredients: ['เนื้อสับ (หมูหรือวัว)', 'พริกแกงคั่วกลิ้ง', 'ขมิ้น', 'ตะไคร้', 'ข่า', 'ใบมะกรูดซอย', 'น้ำปลา'],
       desc: 'เนื้อสับคั่วกับพริกแกงใต้ที่มีขมิ้นจนแห้ง หอมใบมะกรูด เผ็ดร้อนจัดจ้าน' },
     { id: 'pad-sator', th: 'ผัดสะตอ', en: 'Pad Sator', region: 'south', spice: 2, soup: '#10A4B8', top: '#F2589B', plate: true,
+      ingredients: ['สะตอ', 'กะปิ', 'พริกแกง', 'กุ้งหรือหมูสามชั้น', 'น้ำปลา', 'น้ำตาลปี๊บ'],
       desc: 'สะตอผัดกับกะปิและพริกแกง นิยมใส่กุ้งหรือหมู กลิ่นหอมเฉพาะตัวของสะตอ' }
   ];
 
@@ -546,7 +634,7 @@
     const m = pool[Math.floor(Math.random() * pool.length)];
     lastPickId = m.id;
     result.innerHTML = `
-      <div class="result-art">${dishArt(m)}</div>
+      <div class="result-art" data-id="${m.id}">${dishArt(m)}</div>
       <div class="result-body">
         <div class="result-top">
           <span class="tag ${m.region}">${REGIONS[m.region]}</span>
@@ -562,6 +650,48 @@
     result.classList.add('pop');
     syncFavoritesUi();
   }
+
+  const detail = document.getElementById('detail');
+  const detailClose = document.getElementById('detail-close');
+  let detailReturnFocus = null;
+
+  function openDetail(id, returnFocusEl) {
+    const m = MENU_BY_ID[id];
+    if (!m) return;
+    document.getElementById('detail-art').innerHTML = dishArt(m);
+    document.getElementById('detail-region').textContent = REGIONS[m.region];
+    document.getElementById('detail-region').className = `tag ${m.region}`;
+    document.getElementById('detail-spice').innerHTML = spiceHtml(m.spice);
+    document.getElementById('detail-th').textContent = m.th;
+    document.getElementById('detail-en').textContent = m.en;
+    document.getElementById('detail-desc').textContent = m.desc;
+    document.getElementById('detail-ingredients').innerHTML =
+      (m.ingredients || []).map(item => `<li>${item}</li>`).join('');
+    detailReturnFocus = returnFocusEl || null;
+    detail.showModal();
+  }
+
+  function closeDetail() {
+    detail.close();
+    if (detailReturnFocus) detailReturnFocus.focus();
+  }
+
+  detailClose.addEventListener('click', closeDetail);
+  detail.addEventListener('click', e => {
+    if (e.target === detail) closeDetail(); // clicked backdrop
+  });
+  detail.addEventListener('close', () => { detailReturnFocus = null; });
+
+  grid.addEventListener('click', e => {
+    if (e.target.closest('[data-fav]')) return;
+    const card = e.target.closest('.card');
+    if (card) openDetail(card.dataset.id, card);
+  });
+  result.addEventListener('click', e => {
+    if (e.target.closest('[data-fav]')) return;
+    const art = e.target.closest('.result-art');
+    if (art) openDetail(art.dataset.id, art);
+  });
 
   chips.addEventListener('click', e => {
     const btn = e.target.closest('.chip');
