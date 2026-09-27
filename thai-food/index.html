@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>อร่อยทั่วไทย</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-base: 'Sarabun', 'Tahoma', sans-serif;
+    --w-title: 600; --w-sub: 500; --w-body: 300; --w-small: 400;
+    --blue: #0A84FF; --blue-deep: #0050B3; --blue-tint: #E6F2FF;
+    --pink: #F2589B; --pink-tint: #FCE3EE; --pink-deep: #B02765;
+    --yellow: #FFB300; --yellow-tint: #FFF1CC; --yellow-deep: #8A6212;
+    --orange: #FB7A3C; --orange-tint: #FFE8DA; --orange-deep: #B0481C;
+    --purple: #8B5CF6; --purple-tint: #EEE7FD; --purple-deep: #5B36C7;
+    --teal: #10A4B8; --teal-tint: #D9F2F6; --teal-deep: #0A6B7A;
+    --n50: #F5F7FA; --n100: #E3E8EF; --n200: #C2CBD6; --n400: #8995A5; --n600: #4A5868; --n800: #1E2A38;
+    --surface: #FFFFFF;
+    --shadow: rgba(30,42,56,.08);
+    --radius: 18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --n50: #0F1722; --n100: #253344; --n200: #3A4A5E; --n400: #8995A5; --n600: #B7C2D0; --n800: #EEF2F7;
+      --surface: #172230; --shadow: rgba(0,0,0,.35);
+      --blue-tint: #12304F; --blue-deep: #8CC4FF;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --n50: #0F1722; --n100: #253344; --n200: #3A4A5E; --n400: #8995A5; --n600: #B7C2D0; --n800: #EEF2F7;
+    --surface: #172230; --shadow: rgba(0,0,0,.35);
+    --blue-tint: #12304F; --blue-deep: #8CC4FF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
+  body {
+    font-family: var(--font-base);
+    font-weight: var(--w-body);
+    color: var(--n800);
+    background: var(--n50);
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1160px; margin: 0 auto; padding-inline: 16px; }
+  button { font-family: inherit; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0A84FF 0%, #0050B3 100%);
+    color: #fff;
+    padding: 64px 0 88px;
+    overflow: hidden;
+  }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 32px;
+  }
+  .eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.3);
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-weight: var(--w-small);
+    font-size: .9rem;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero p { font-size: 1.15rem; max-width: 34ch; opacity: .92; }
+  .hero-art { justify-self: center; width: min(360px, 100%); }
+  .hero-art svg { width: 100%; height: auto; display: block; }
+
+  /* Filter */
+  .filter-bar {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px var(--shadow);
+    padding: 20px 24px;
+    margin-top: -44px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+  }
+  .filter-bar h2 { font-size: 1.05rem; font-weight: var(--w-sub); color: var(--n600); margin-right: 4px; }
+  .search-input {
+    flex: 1 1 220px;
+    min-width: 180px;
+    font-size: 1rem;
+    font-weight: var(--w-body);
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--n100);
+    background: var(--n50);
+    color: var(--n800);
+    outline: none;
+    transition: border-color .2s, background .2s;
+  }
+  .search-input::placeholder { color: var(--n400); }
+  .search-input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+  .search-input:focus { border-color: var(--blue); background: var(--surface); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 1rem;
+    font-weight: var(--w-small);
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--n100);
+    background: var(--n50);
+    color: var(--n600);
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .chip:hover { border-color: var(--blue); color: var(--blue-deep); }
+  .chip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; font-weight: var(--w-sub); }
+  .chip.fav-chip { display: inline-flex; align-items: center; gap: 6px; }
+  .chip.fav-chip svg { width: 16px; height: 16px; }
+  .chip:focus-visible, .heart:focus-visible, .btn-random:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+  .count { margin-left: auto; color: var(--n400); font-weight: var(--w-small); font-size: .95rem; }
+
+  /* Random pick */
+  .random {
+    margin-top: 24px;
+    background: var(--surface);
+    border: 1px solid var(--n100);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 2fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .random h2 { font-size: 1.5rem; font-weight: var(--w-title); text-wrap: balance; }
+  .random-intro { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .random-intro p { color: var(--n600); }
+  .btn-random {
+    font-size: 1.05rem;
+    font-weight: var(--w-title);
+    color: #fff;
+    background: var(--blue);
+    border: none;
+    border-radius: 999px;
+    padding: 12px 26px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform .15s, background .2s;
+  }
+  .btn-random:hover { background: #0072E0; }
+  .btn-random:active { transform: scale(.97); }
+  .btn-random svg { width: 20px; height: 20px; }
+  .result {
+    background: var(--blue-tint);
+    border-radius: 14px;
+    padding: 20px;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .result-empty { color: var(--blue-deep); font-weight: var(--w-small); width: 100%; text-align: center; }
+  .result-art svg { width: 130px; height: 96px; display: block; }
+  .result-art .dish-photo { width: 130px; height: 96px; object-fit: cover; border-radius: 12px; display: block; }
+  .result-body { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
+  .result-body h3 { font-size: 1.6rem; font-weight: 700; line-height: 1.25; color: var(--n800); }
+  .result-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .result.pop { animation: pop .4s ease both; }
+  @keyframes pop { from { transform: scale(.97); opacity: .6; } to { transform: none; opacity: 1; } }
+
+  /* Menu grid */
+  .section-head { margin: 48px 0 20px; }
+  .section-head h2 { font-size: 1.8rem; font-weight: var(--w-title); color: var(--n800); }
+  .section-head p { color: var(--n600); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--n100);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform .25s, box-shadow .25s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px var(--shadow); }
+  .card.is-hidden { display: none; }
+  .card.fade-in { animation: fadeIn .35s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .card-art { padding: 20px 20px 8px; display: flex; justify-content: center; }
+  .card-art svg { width: 150px; height: 110px; }
+  .dish-photo { width: 150px; height: 110px; object-fit: cover; border-radius: 12px; }
+  .card-body { padding: 8px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .heart {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--n100);
+    background: var(--surface);
+    color: var(--n400);
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color .2s, background .2s, border-color .2s, transform .15s;
+  }
+  .heart svg { width: 20px; height: 20px; }
+  .heart:hover { color: var(--pink); border-color: var(--pink); }
+  .heart:active { transform: scale(.9); }
+  .heart[aria-pressed="true"] { color: #fff; background: var(--pink); border-color: var(--pink); }
+  .heart[aria-pressed="true"] svg path { fill: currentColor; }
+  .card .heart { position: absolute; top: 12px; right: 12px; }
+  .tag {
+    font-size: .8rem;
+    font-weight: var(--w-sub);
+    padding: 2px 10px;
+    border-radius: 999px;
+  }
+  .tag.north { background: var(--purple-tint); color: var(--purple-deep); }
+  .tag.isan { background: var(--orange-tint); color: var(--orange-deep); }
+  .tag.central { background: #E6F2FF; color: #0050B3; }
+  .tag.south { background: var(--teal-tint); color: var(--teal-deep); }
+  .spice { display: flex; gap: 2px; align-items: center; }
+  .spice svg { width: 16px; height: 16px; }
+  .spice .mild { font-size: .8rem; color: var(--n400); font-weight: var(--w-small); }
+  .card h3 { font-size: 1.35rem; font-weight: var(--w-title); line-height: 1.3; }
+  .en { font-size: .9rem; color: var(--n400); font-weight: var(--w-small); }
+  .card .en { margin-top: -6px; }
+  .desc { color: var(--n600); font-size: .98rem; }
+  .empty-fav {
+    border: 1px dashed var(--n200);
+    border-radius: var(--radius);
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--n600);
+    font-weight: var(--w-small);
+  }
+  main { padding-bottom: 64px; }
+
+  footer {
+    border-top: 1px solid var(--n100);
+    background: var(--surface);
+    padding: 24px 0;
+    text-align: center;
+    color: var(--n400);
+    font-weight: var(--w-small);
+    font-size: .92rem;
+  }
+
+  @media (max-width: 760px) {
+    .hero { padding: 40px 0 76px; }
+    .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+    .hero p { margin: 0 auto; }
+    .hero-art { width: 220px; order: -1; }
+    .count { margin-left: 0; width: 100%; }
+    .search-input { flex-basis: 100%; }
+    .filter-bar { padding: 16px; }
+    .random { grid-template-columns: 1fr; padding: 20px; }
+    .result { flex-direction: column; text-align: center; align-items: center; }
+    .result-top { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card, .chip, .heart, .btn-random { transition: none; }
+    .card.fade-in, .result.pop { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">ชวนชิมอาหารไทย 4 ภาค</span>
+      <h1>อร่อยทั่วไทย</h1>
+      <p>รวม 20 เมนูขึ้นชื่อจากเหนือจรดใต้ คิดไม่ออกว่าจะกินอะไรก็กดสุ่มได้เลย</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 260">
+        <ellipse cx="160" cy="232" rx="120" ry="14" fill="rgba(0,0,0,.18)"/>
+        <path d="M60 58c-8-22 10-30 4-50M100 50c-8-22 10-30 4-50M140 58c-8-22 10-30 4-50" stroke="rgba(255,255,255,.55)" stroke-width="6" fill="none" stroke-linecap="round" transform="translate(40 20)"/>
+        <ellipse cx="160" cy="118" rx="130" ry="30" fill="#FFB300"/>
+        <path d="M30 118h260c0 62-58 108-130 108S30 180 30 118z" fill="#fff"/>
+        <path d="M30 118h260c-2 10-5 19-9 28H39c-4-9-7-18-9-28z" fill="#E6F2FF"/>
+        <ellipse cx="160" cy="118" rx="130" ry="30" fill="none" stroke="#fff" stroke-width="6"/>
+        <circle cx="110" cy="112" r="14" fill="#FB7A3C"/>
+        <circle cx="200" cy="108" r="12" fill="#FB7A3C"/>
+        <path d="M140 104c10-10 28-10 38 0" stroke="#10A4B8" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M225 120c8-6 20-6 26 2" stroke="#10A4B8" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M70 122c8-6 18-6 24 0" stroke="#10A4B8" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <rect x="150" y="160" width="20" height="20" rx="4" fill="#0A84FF" transform="rotate(45 160 170)"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="filter-bar" aria-label="กรองเมนู">
+    <h2>เลือกดู</h2>
+    <input class="search-input" type="search" id="search" placeholder="ค้นหาเมนู เช่น ต้มยำ, เผ็ด, มะกรูด" aria-label="ค้นหาเมนู">
+    <div class="chips" id="chips"></div>
+    <span class="count" id="count" aria-live="polite"></span>
+  </section>
+
+  <section class="random" aria-label="สุ่มเมนูวันนี้">
+    <div class="random-intro">
+      <h2>วันนี้กินอะไรดี</h2>
+      <p>สุ่มจากทั้ง 20 เมนู กดซ้ำได้จนเจอเมนูที่ใช่</p>
+      <button class="btn-random" id="btn-random" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        สุ่มเมนูวันนี้
+      </button>
+    </div>
+    <div class="result" id="result" aria-live="polite">
+      <p class="result-empty">กดปุ่มสุ่มเมนูวันนี้ แล้วเมนูที่ได้จะขึ้นตรงนี้</p>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h2>เมนูแนะนำ</h2>
+    <p>ระดับพริกบอกความเผ็ดโดยประมาณ ปรับได้ตามชอบในแต่ละร้าน กดรูปหัวใจเพื่อเก็บเป็นเมนูโปรด</p>
+  </div>
+
+  <section class="grid" id="grid" aria-label="รายการเมนูอาหาร"></section>
+  <p class="empty-fav" id="empty-fav" hidden>ยังไม่มีเมนูโปรด กดรูปหัวใจบนการ์ดเพื่อเก็บไว้ได้เลย</p>
+</main>
+
+<footer>
+  <div class="wrap">จัดทำโดย วิศวกรรีพอร์ต</div>
+</footer>
+
+<script>
+  // Menu data: add a new object here to add a card (id must be unique)
+  const REGIONS = {
+    north: 'ภาคเหนือ',
+    isan: 'ภาคอีสาน',
+    central: 'ภาคกลาง',
+    south: 'ภาคใต้'
+  };
+
+  const MENUS = [
+    // North
+    { id: 'khao-soi', th: 'ข้าวซอย', en: 'Khao Soi', region: 'north', spice: 2, soup: '#FFB300', top: '#FB7A3C', photo: 'images/khao-soi.png',
+      desc: 'บะหมี่ไข่ในน้ำแกงกะทิหอมเครื่องแกง โรยเส้นทอดกรอบ กินคู่ผักกาดดอง หอมแดง และมะนาว' },
+    { id: 'hang-lay', th: 'แกงฮังเล', en: 'Gaeng Hang Lay', region: 'north', spice: 1, soup: '#B0481C', top: '#FFB300', photo: 'images/hang-lay.png',
+      desc: 'แกงหมูสามชั้นแบบไม่ใส่กะทิ รสเข้มจากผงฮังเล ใส่ขิงซอยและถั่วลิสง เคี่ยวจนหมูนุ่ม' },
+    { id: 'nam-prik-noom', th: 'น้ำพริกหนุ่ม', en: 'Nam Prik Noom', region: 'north', spice: 2, soup: '#D9F2F6', top: '#10A4B8', plate: true,
+      desc: 'พริกหนุ่ม หอมแดง และกระเทียมย่างไฟ นำมาโขลกรวมกัน กินกับผักนึ่งและแคบหมู' },
+    { id: 'sai-oua', th: 'ไส้อั่ว', en: 'Sai Oua', region: 'north', spice: 2, soup: '#FFE8DA', top: '#B0481C', plate: true,
+      desc: 'ไส้กรอกเมืองเหนือ ยัดหมูสับคลุกพริกแกง ตะไคร้ และใบมะกรูด แล้วนำไปย่างจนหอม' },
+    { id: 'khanom-jeen-nam-ngiao', th: 'ขนมจีนน้ำเงี้ยว', en: 'Khanom Jeen Nam Ngiao', region: 'north', spice: 1, soup: '#E5484D', top: '#FFB300',
+      desc: 'ขนมจีนราดน้ำเงี้ยวรสเข้ม ใส่หมูสับ กระดูกหมู มะเขือเทศ และดอกงิ้วแห้ง' },
+    // Isan
+    { id: 'som-tam', th: 'ส้มตำ', en: 'Som Tam', region: 'isan', spice: 3, soup: '#D9F2F6', top: '#10A4B8', plate: true,
+      desc: 'มะละกอดิบสับเส้นตำกับพริก กระเทียม มะนาว น้ำปลา และมะเขือเทศ รสเปรี้ยวเผ็ดสดชื่น' },
+    { id: 'larb', th: 'ลาบ', en: 'Larb', region: 'isan', spice: 3, soup: '#C2CBD6', top: '#10A4B8', plate: true,
+      desc: 'เนื้อสับคลุกข้าวคั่ว พริกป่น มะนาว น้ำปลา และสมุนไพรอย่างสะระแหน่ กินกับข้าวเหนียว' },
+    { id: 'gai-yang', th: 'ไก่ย่าง', en: 'Gai Yang', region: 'isan', spice: 0, soup: '#FFF1CC', top: '#B0481C', plate: true,
+      desc: 'ไก่หมักกระเทียม รากผักชี และพริกไทย ย่างบนเตาถ่าน กินคู่ข้าวเหนียวและน้ำจิ้มแจ่ว' },
+    { id: 'tom-saep', th: 'ต้มแซ่บ', en: 'Tom Saep', region: 'isan', spice: 3, soup: '#FFE8DA', top: '#10A4B8',
+      desc: 'ต้มรสเปรี้ยวเผ็ด หอมข่า ตะไคร้ ใบมะกรูด เผ็ดจากพริกป่น นิยมใส่กระดูกหมูอ่อน' },
+    { id: 'soup-nor-mai', th: 'ซุปหน่อไม้', en: 'Soup Nor Mai', region: 'isan', spice: 2, soup: '#10A4B8', top: '#FFF1CC', plate: true,
+      desc: 'หน่อไม้ต้มฉีกฝอย คลุกน้ำใบย่านาง พริกป่น ข้าวคั่ว และงาคั่ว' },
+    // Central
+    { id: 'tom-yum-goong', th: 'ต้มยำกุ้ง', en: 'Tom Yum Goong', region: 'central', spice: 2, soup: '#FB7A3C', top: '#F2589B', photo: 'images/tom-yum-goong.png',
+      desc: 'ต้มกุ้งกับข่า ตะไคร้ ใบมะกรูด พริก และมะนาว ได้รสเปรี้ยว เผ็ด หอมสมุนไพรครบในชามเดียว' },
+    { id: 'green-curry', th: 'แกงเขียวหวาน', en: 'Green Curry', region: 'central', spice: 2, soup: '#10A4B8', top: '#8B5CF6',
+      desc: 'แกงกะทิกับพริกแกงเขียว ใส่มะเขือเปราะ ใบโหระพา นิยมใช้ไก่ ทานคู่ข้าวสวยหรือขนมจีน' },
+    { id: 'pad-thai', th: 'ผัดไทย', en: 'Pad Thai', region: 'central', spice: 0, soup: '#FFF1CC', top: '#FB7A3C', plate: true, photo: 'images/pad-thai.png',
+      desc: 'เส้นจันท์ผัดซอสมะขามเปียกและน้ำตาลปี๊บ ใส่เต้าหู้ กุ้งแห้ง ไข่ ถั่วงอก กุยช่าย โรยถั่วลิสง' },
+    { id: 'tom-kha-gai', th: 'ต้มข่าไก่', en: 'Tom Kha Gai', region: 'central', spice: 1, soup: '#FFF1CC', top: '#10A4B8',
+      desc: 'ต้มไก่ในกะทิกับข่า ตะไคร้ และใบมะกรูด รสเปรี้ยว เค็ม มัน หอมข่า' },
+    { id: 'panang', th: 'พะแนง', en: 'Panang', region: 'central', spice: 1, soup: '#FB7A3C', top: '#10A4B8', plate: true,
+      desc: 'เนื้อสัตว์เคี่ยวกับกะทิและพริกแกงพะแนงจนน้ำขลุกขลิก โรยใบมะกรูดซอย รสหวานมัน' },
+    // South
+    { id: 'tai-pla', th: 'แกงไตปลา', en: 'Gaeng Tai Pla', region: 'south', spice: 3, soup: '#8A6212', top: '#10A4B8',
+      desc: 'แกงรสจัดจากไตปลาหมัก ใส่ผักหลายชนิดอย่างหน่อไม้และฟักทอง เผ็ดร้อนแบบปักษ์ใต้' },
+    { id: 'khao-yam', th: 'ข้าวยำ', en: 'Khao Yam', region: 'south', spice: 0, soup: '#EEE7FD', top: '#10A4B8', plate: true,
+      desc: 'ข้าวคลุกน้ำบูดู กับผักสดซอย มะพร้าวคั่ว และกุ้งแห้งป่น พริกป่นแยกให้เติมเองตามชอบ' },
+    { id: 'gaeng-leung', th: 'แกงเหลือง', en: 'Gaeng Leung', region: 'south', spice: 3, soup: '#FFB300', top: '#10A4B8',
+      desc: 'แกงส้มแบบใต้ สีเหลืองจากขมิ้น ไม่ใส่กะทิ รสเปรี้ยวเผ็ดเค็ม มักใส่ปลากับหน่อไม้ดองหรือมะละกอ' },
+    { id: 'kua-kling', th: 'คั่วกลิ้ง', en: 'Kua Kling', region: 'south', spice: 3, soup: '#B0481C', top: '#10A4B8', plate: true,
+      desc: 'เนื้อสับคั่วกับพริกแกงใต้ที่มีขมิ้นจนแห้ง หอมใบมะกรูด เผ็ดร้อนจัดจ้าน' },
+    { id: 'pad-sator', th: 'ผัดสะตอ', en: 'Pad Sator', region: 'south', spice: 2, soup: '#10A4B8', top: '#F2589B', plate: true,
+      desc: 'สะตอผัดกับกะปิและพริกแกง นิยมใส่กุ้งหรือหมู กลิ่นหอมเฉพาะตัวของสะตอ' }
+  ];
+
+  const MENU_BY_ID = Object.fromEntries(MENUS.map(m => [m.id, m]));
+
+  function dishArt(m, cls = '') {
+    if (m.photo) {
+      return `<img class="${cls} dish-photo" src="${m.photo}" alt="${m.th}" loading="lazy">`;
+    }
+    return dishSvg(m, cls);
+  }
+
+  function dishSvg(m, cls = '') {
+    if (m.plate) {
+      return `<svg class="${cls}" viewBox="0 0 150 110" aria-hidden="true">
+        <ellipse cx="75" cy="72" rx="70" ry="26" fill="#E3E8EF"/>
+        <ellipse cx="75" cy="68" rx="70" ry="26" fill="#fff" stroke="#E3E8EF" stroke-width="2"/>
+        <ellipse cx="75" cy="64" rx="46" ry="15" fill="${m.soup}"/>
+        <path d="M45 62c8-6 16-6 22 0M80 58c8-6 16-6 22 0M60 70c8-5 14-5 20 0" stroke="${m.top}" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <circle cx="95" cy="68" r="5" fill="#FB7A3C"/>
+      </svg>`;
+    }
+    return `<svg class="${cls}" viewBox="0 0 150 110" aria-hidden="true">
+      <ellipse cx="75" cy="102" rx="46" ry="6" fill="#E3E8EF"/>
+      <path d="M58 22c-4-8 4-12 0-20M78 22c-4-8 4-12 0-20M98 22c-4-8 4-12 0-20" stroke="#C2CBD6" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M12 44h126c0 32-28 56-63 56S12 76 12 44z" fill="#0A84FF"/>
+      <path d="M12 44h126c-1 6-3 11-5 16H17c-2-5-4-10-5-16z" fill="#0050B3" opacity=".35"/>
+      <ellipse cx="75" cy="44" rx="63" ry="14" fill="${m.soup}"/>
+      <ellipse cx="75" cy="44" rx="63" ry="14" fill="none" stroke="#fff" stroke-width="3"/>
+      <circle cx="55" cy="42" r="6" fill="${m.top}"/>
+      <circle cx="96" cy="40" r="5" fill="${m.top}"/>
+      <path d="M68 38c5-4 12-4 16 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>`;
+  }
+
+  const CHILI = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M11 3c1-1 2-1 3 0M11 3c-1 5-4 10-9 11 5-3 6-7 6-10 1-1 2-1 3-1z" fill="#FB7A3C" stroke="#B0481C" stroke-width="1"/></svg>';
+  const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+
+  function spiceHtml(level) {
+    if (level === 0) return '<span class="mild">ไม่เผ็ด</span>';
+    return CHILI.repeat(level);
+  }
+  function spiceAttrs(level) {
+    return `title="ความเผ็ด ${level} จาก 3" aria-label="ความเผ็ด ${level} จาก 3"`;
+  }
+  function heartBtn(m) {
+    return `<button class="heart" type="button" data-fav="${m.id}" aria-pressed="false" aria-label="เก็บ ${m.th} เป็นเมนูโปรด">${HEART}</button>`;
+  }
+
+  // Favorites: stored per browser in localStorage; the page still works if storage is blocked
+  const STORAGE_KEY = 'aroi-thai:favorites';
+  function loadFavorites() {
+    try {
+      const ids = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      return new Set(Array.isArray(ids) ? ids.filter(id => MENU_BY_ID[id]) : []);
+    } catch (e) {
+      return new Set();
+    }
+  }
+  function saveFavorites() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...favorites])); } catch (e) { /* storage unavailable */ }
+  }
+  const favorites = loadFavorites();
+
+  const grid = document.getElementById('grid');
+  const chips = document.getElementById('chips');
+  const count = document.getElementById('count');
+  const emptyFav = document.getElementById('empty-fav');
+  const result = document.getElementById('result');
+  const btnRandom = document.getElementById('btn-random');
+  const searchInput = document.getElementById('search');
+  let currentFilter = 'all';
+  let currentSearch = '';
+  let lastPickId = null;
+
+  grid.innerHTML = MENUS.map(m => `
+    <article class="card" data-region="${m.region}" data-id="${m.id}">
+      ${heartBtn(m)}
+      <div class="card-art">${dishArt(m)}</div>
+      <div class="card-body">
+        <div class="card-top">
+          <span class="tag ${m.region}">${REGIONS[m.region]}</span>
+          <span class="spice" ${spiceAttrs(m.spice)}>${spiceHtml(m.spice)}</span>
+        </div>
+        <h3>${m.th}</h3>
+        <div class="en">${m.en}</div>
+        <p class="desc">${m.desc}</p>
+      </div>
+    </article>`).join('');
+
+  const FILTERS = [['all', 'ทั้งหมด'], ...Object.entries(REGIONS)];
+  chips.innerHTML = FILTERS.map(([key, label]) =>
+    `<button class="chip" type="button" data-filter="${key}" aria-pressed="false">${label}</button>`
+  ).join('') +
+    `<button class="chip fav-chip" type="button" data-filter="fav" aria-pressed="false">${HEART}<span id="fav-label"></span></button>`;
+
+  function syncFavoritesUi() {
+    document.querySelectorAll('[data-fav]').forEach(btn => {
+      const on = favorites.has(btn.dataset.fav);
+      const name = MENU_BY_ID[btn.dataset.fav].th;
+      btn.setAttribute('aria-pressed', on);
+      btn.setAttribute('aria-label', on ? `เอา ${name} ออกจากเมนูโปรด` : `เก็บ ${name} เป็นเมนูโปรด`);
+    });
+    document.getElementById('fav-label').textContent = `เมนูโปรด (${favorites.size})`;
+  }
+
+  function matchesSearch(id, term) {
+    if (!term) return true;
+    const m = MENU_BY_ID[id];
+    return `${m.th} ${m.en} ${m.desc}`.toLowerCase().includes(term);
+  }
+
+  function applyFilter(filter) {
+    currentFilter = filter;
+    let shown = 0;
+    grid.querySelectorAll('.card').forEach(card => {
+      const regionMatch = filter === 'all'
+        || (filter === 'fav' ? favorites.has(card.dataset.id) : card.dataset.region === filter);
+      const match = regionMatch && matchesSearch(card.dataset.id, currentSearch);
+      card.classList.toggle('is-hidden', !match);
+      card.classList.remove('fade-in');
+      if (match) {
+        void card.offsetWidth; // restart animation
+        card.classList.add('fade-in');
+        shown++;
+      }
+    });
+    chips.querySelectorAll('.chip').forEach(c =>
+      c.setAttribute('aria-pressed', c.dataset.filter === filter)
+    );
+    emptyFav.hidden = shown !== 0;
+    emptyFav.textContent = (filter === 'fav' && !currentSearch)
+      ? 'ยังไม่มีเมนูโปรด กดรูปหัวใจบนการ์ดเพื่อเก็บไว้ได้เลย'
+      : 'ไม่พบเมนูที่ตรงกับคำค้นหา ลองคำอื่นดู';
+    count.textContent = `แสดง ${shown} เมนู`;
+  }
+
+  function toggleFavorite(id) {
+    if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
+    saveFavorites();
+    syncFavoritesUi();
+    if (currentFilter === 'fav') applyFilter('fav');
+  }
+
+  function randomPick() {
+    // Pick from all menus, never the same as the previous pick
+    const pool = MENUS.filter(m => m.id !== lastPickId);
+    const m = pool[Math.floor(Math.random() * pool.length)];
+    lastPickId = m.id;
+    result.innerHTML = `
+      <div class="result-art">${dishArt(m)}</div>
+      <div class="result-body">
+        <div class="result-top">
+          <span class="tag ${m.region}">${REGIONS[m.region]}</span>
+          <span class="spice" ${spiceAttrs(m.spice)}>${spiceHtml(m.spice)}</span>
+        </div>
+        <h3>${m.th}</h3>
+        <div class="en">${m.en}</div>
+        <p class="desc">${m.desc}</p>
+      </div>
+      ${heartBtn(m)}`;
+    result.classList.remove('pop');
+    void result.offsetWidth;
+    result.classList.add('pop');
+    syncFavoritesUi();
+  }
+
+  chips.addEventListener('click', e => {
+    const btn = e.target.closest('.chip');
+    if (btn) applyFilter(btn.dataset.filter);
+  });
+  searchInput.addEventListener('input', () => {
+    currentSearch = searchInput.value.trim().toLowerCase();
+    applyFilter(currentFilter);
+  });
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-fav]');
+    if (btn) toggleFavorite(btn.dataset.fav);
+  });
+  btnRandom.addEventListener('click', randomPick);
+
+  syncFavoritesUi();
+  applyFilter('all');
+</script>
+</body>
+</html>
