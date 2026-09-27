@@ -10,6 +10,14 @@ desktop.ini
 # Claude Code local state
 .claude/settings.local.json
 
+# Playwright MCP test output
+.playwright-mcp/
+
+# Skill junctions (real files live in .agents/skills)
+.claude/skills/grill-with-docs
+.claude/skills/grilling
+.claude/skills/domain-modeling
+
 # Python
 __pycache__/
 *.py[cod]

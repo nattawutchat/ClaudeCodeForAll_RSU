@@ -6,52 +6,46 @@
 <title>อร่อยทั่วไทย</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --font-base: 'Sarabun', 'Tahoma', sans-serif;
-    --w-title: 600; --w-sub: 500; --w-body: 300; --w-small: 400;
-    --blue: #0A84FF; --blue-deep: #0050B3; --blue-tint: #E6F2FF;
-    --pink: #F2589B; --pink-tint: #FCE3EE; --pink-deep: #B02765;
-    --yellow: #FFB300; --yellow-tint: #FFF1CC; --yellow-deep: #8A6212;
-    --orange: #FB7A3C; --orange-tint: #FFE8DA; --orange-deep: #B0481C;
-    --purple: #8B5CF6; --purple-tint: #EEE7FD; --purple-deep: #5B36C7;
-    --teal: #10A4B8; --teal-tint: #D9F2F6; --teal-deep: #0A6B7A;
-    --n50: #F5F7FA; --n100: #E3E8EF; --n200: #C2CBD6; --n400: #8995A5; --n600: #4A5868; --n800: #1E2A38;
+    color-scheme: light;
+    --font-base: 'Kanit', 'Tahoma', sans-serif;
+    --w-display: 400; --w-bold: 700; --w-medium: 500; --w-body: 300;
+
+    --color-deep-forest: #00473C;
+    --color-lime-glow: #E6FF55;
+    --color-sage-mist: #D8E5D6;
+    --color-warm-sand: #E8DCC6;
+    --color-cream-canvas: #F4F3E7;
+    --color-forest-shadow: #0E150E;
+    --color-warm-gray: #8C8C82;
+    --color-slate-gray: #555555;
+
     --surface: #FFFFFF;
-    --shadow: rgba(30,42,56,.08);
-    --radius: 18px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --n50: #0F1722; --n100: #253344; --n200: #3A4A5E; --n400: #8995A5; --n600: #B7C2D0; --n800: #EEF2F7;
-      --surface: #172230; --shadow: rgba(0,0,0,.35);
-      --blue-tint: #12304F; --blue-deep: #8CC4FF;
-    }
-  }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --n50: #0F1722; --n100: #253344; --n200: #3A4A5E; --n400: #8995A5; --n600: #B7C2D0; --n800: #EEF2F7;
-    --surface: #172230; --shadow: rgba(0,0,0,.35);
-    --blue-tint: #12304F; --blue-deep: #8CC4FF;
+    --shadow-xl: rgba(14, 21, 14, 0.4) 3px 3px 32px -10px;
+    --radius-cards: 24px;
+    --radius-badges: 20px;
+    --radius-images: 20px;
+    --radius-inputs: 8px;
+    --radius-buttons: 9999px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   [hidden] { display: none !important; }
   body {
     font-family: var(--font-base);
     font-weight: var(--w-body);
-    color: var(--n800);
-    background: var(--n50);
+    color: var(--color-forest-shadow);
+    background: var(--color-cream-canvas);
     line-height: 1.6;
   }
-  .wrap { max-width: 1160px; margin: 0 auto; padding-inline: 16px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding-inline: 16px; }
   button { font-family: inherit; }
 
   /* Hero */
   .hero {
-    background: linear-gradient(135deg, #0A84FF 0%, #0050B3 100%);
-    color: #fff;
+    background: var(--color-deep-forest);
+    color: var(--color-cream-canvas);
     padding: 64px 0 88px;
     overflow: hidden;
   }
@@ -63,29 +57,31 @@
   }
   .eyebrow {
     display: inline-block;
-    background: rgba(255,255,255,.16);
-    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(244,243,231,.14);
+    border: 1px solid rgba(244,243,231,.32);
     padding: 4px 14px;
-    border-radius: 999px;
-    font-weight: var(--w-small);
-    font-size: .9rem;
-    margin-bottom: 16px;
+    border-radius: var(--radius-buttons);
+    font-weight: var(--w-medium);
+    font-size: .85rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
   .hero h1 {
-    font-weight: 700;
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    line-height: 1.15;
-    margin-bottom: 16px;
+    font-weight: var(--w-display);
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: .95;
+    margin-bottom: 20px;
   }
-  .hero p { font-size: 1.15rem; max-width: 34ch; opacity: .92; }
+  .hero p { font-size: 1.15rem; max-width: 34ch; opacity: .85; font-weight: var(--w-medium); }
   .hero-art { justify-self: center; width: min(360px, 100%); }
   .hero-art svg { width: 100%; height: auto; display: block; }
 
   /* Filter */
   .filter-bar {
     background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: 0 10px 30px var(--shadow);
+    border-radius: var(--radius-cards);
+    box-shadow: var(--shadow-xl);
     padding: 20px 24px;
     margin-top: -44px;
     position: relative;
@@ -94,175 +90,187 @@
     align-items: center;
     gap: 12px 16px;
   }
-  .filter-bar h2 { font-size: 1.05rem; font-weight: var(--w-sub); color: var(--n600); margin-right: 4px; }
+  .filter-bar h2 { font-size: 1.05rem; font-weight: var(--w-medium); color: var(--color-slate-gray); margin-right: 4px; }
   .search-input {
     flex: 1 1 220px;
     min-width: 180px;
     font-size: 1rem;
     font-weight: var(--w-body);
     padding: 9px 16px;
-    border-radius: 999px;
-    border: 1px solid var(--n100);
-    background: var(--n50);
-    color: var(--n800);
+    border-radius: var(--radius-inputs);
+    border: 1px solid var(--color-warm-gray);
+    background: var(--color-cream-canvas);
+    color: var(--color-forest-shadow);
     outline: none;
     transition: border-color .2s, background .2s;
   }
-  .search-input::placeholder { color: var(--n400); }
-  .search-input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
-  .search-input:focus { border-color: var(--blue); background: var(--surface); }
+  .search-input::placeholder { color: var(--color-warm-gray); }
+  .search-input:focus-visible { outline: 3px solid var(--color-deep-forest); outline-offset: 2px; }
+  .search-input:focus { border-color: var(--color-deep-forest); background: var(--surface); }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip {
-    font-size: 1rem;
-    font-weight: var(--w-small);
+    font-size: .95rem;
+    font-weight: var(--w-bold);
+    letter-spacing: .01em;
     padding: 8px 18px;
-    border-radius: 999px;
-    border: 1px solid var(--n100);
-    background: var(--n50);
-    color: var(--n600);
+    border-radius: var(--radius-buttons);
+    border: 2px solid var(--color-deep-forest);
+    background: transparent;
+    color: var(--color-deep-forest);
     cursor: pointer;
     transition: background .2s, color .2s, border-color .2s;
   }
-  .chip:hover { border-color: var(--blue); color: var(--blue-deep); }
-  .chip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; font-weight: var(--w-sub); }
+  .chip:hover { background: rgba(0,71,60,.08); }
+  .chip[aria-pressed="true"] { background: var(--color-lime-glow); border-color: var(--color-lime-glow); color: var(--color-forest-shadow); }
   .chip.fav-chip { display: inline-flex; align-items: center; gap: 6px; }
   .chip.fav-chip svg { width: 16px; height: 16px; }
   .chip:focus-visible, .heart:focus-visible, .btn-random:focus-visible,
-  .detail-btn:focus-visible, .detail-close:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+  .detail-btn:focus-visible, .detail-close:focus-visible { outline: 3px solid var(--color-deep-forest); outline-offset: 2px; }
   .detail-btn {
     align-self: flex-start;
-    font-size: .88rem;
-    font-weight: var(--w-sub);
-    color: var(--blue-deep);
+    font-size: .9rem;
+    font-weight: var(--w-bold);
+    color: var(--color-forest-shadow);
     background: none;
     border: none;
     padding: 0;
     margin-top: 2px;
     cursor: pointer;
-    text-decoration: underline;
   }
-  .detail-btn:hover { color: var(--blue); }
-  .count { margin-left: auto; color: var(--n400); font-weight: var(--w-small); font-size: .95rem; }
+  .detail-btn::after { content: ' \2192'; }
+  .detail-btn:hover { text-decoration: underline; }
+  .count { margin-left: auto; color: var(--color-warm-gray); font-weight: var(--w-medium); font-size: .95rem; }
 
   /* Random pick */
   .random {
     margin-top: 24px;
-    background: var(--surface);
-    border: 1px solid var(--n100);
-    border-radius: var(--radius);
-    padding: 24px;
+    background: var(--color-warm-sand);
+    border: none;
+    border-radius: var(--radius-cards);
+    padding: 40px;
     display: grid;
     grid-template-columns: minmax(220px, 1fr) 2fr;
     gap: 24px;
     align-items: center;
   }
-  .random h2 { font-size: 1.5rem; font-weight: var(--w-title); text-wrap: balance; }
+  .random h2 { font-size: 1.8rem; font-weight: var(--w-display); line-height: 1; text-wrap: balance; }
   .random-intro { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-  .random-intro p { color: var(--n600); }
+  .random-intro p { color: var(--color-slate-gray); }
   .btn-random {
-    font-size: 1.05rem;
-    font-weight: var(--w-title);
-    color: #fff;
-    background: var(--blue);
+    font-size: 1rem;
+    font-weight: var(--w-bold);
+    letter-spacing: .017em;
+    color: var(--color-forest-shadow);
+    background: var(--color-lime-glow);
     border: none;
-    border-radius: 999px;
-    padding: 12px 26px;
+    border-radius: var(--radius-buttons);
+    padding: 16px 24px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: transform .15s, background .2s;
+    box-shadow: var(--shadow-xl);
+    transition: transform .15s;
   }
-  .btn-random:hover { background: #0072E0; }
+  .btn-random:hover { transform: translateY(-1px); }
   .btn-random:active { transform: scale(.97); }
   .btn-random svg { width: 20px; height: 20px; }
   .result {
-    background: var(--blue-tint);
-    border-radius: 14px;
+    background: var(--color-sage-mist);
+    border-radius: var(--radius-cards);
     padding: 20px;
     min-height: 150px;
     display: flex;
     align-items: center;
     gap: 20px;
   }
-  .result-empty { color: var(--blue-deep); font-weight: var(--w-small); width: 100%; text-align: center; }
+  .result-empty { color: var(--color-deep-forest); font-weight: var(--w-medium); width: 100%; text-align: center; }
+  .result-art { background: var(--color-warm-sand); border-radius: var(--radius-images); padding: 8px; flex-shrink: 0; }
   .result-art svg { width: 130px; height: 96px; display: block; }
-  .result-art .dish-photo { width: 130px; height: 96px; object-fit: cover; border-radius: 12px; display: block; }
+  .result-art .dish-photo { width: 130px; height: 96px; object-fit: cover; border-radius: var(--radius-images); display: block; }
   .result-body { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
-  .result-body h3 { font-size: 1.6rem; font-weight: 700; line-height: 1.25; color: var(--n800); }
+  .result-body h3 { font-size: 1.6rem; font-weight: var(--w-bold); line-height: 1.25; color: var(--color-forest-shadow); }
   .result-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .result.pop { animation: pop .4s ease both; }
   @keyframes pop { from { transform: scale(.97); opacity: .6; } to { transform: none; opacity: 1; } }
 
   /* Menu grid */
-  .section-head { margin: 48px 0 20px; }
-  .section-head h2 { font-size: 1.8rem; font-weight: var(--w-title); color: var(--n800); }
-  .section-head p { color: var(--n600); }
+  .section-head { margin: 60px 0 24px; }
+  .section-head h2 { font-size: 2rem; font-weight: var(--w-display); color: var(--color-forest-shadow); }
+  .section-head p { color: var(--color-slate-gray); margin-top: 4px; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 32px 24px;
   }
   .card {
-    background: var(--surface);
-    border: 1px solid var(--n100);
-    border-radius: var(--radius);
-    overflow: hidden;
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: transform .25s, box-shadow .25s;
+    transition: transform .2s;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px var(--shadow); }
+  .card:hover { transform: translateY(-2px); }
   .card.is-hidden { display: none; }
   .card.fade-in { animation: fadeIn .35s ease both; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-  .card-art { padding: 20px 20px 8px; display: flex; justify-content: center; }
+  .card-art {
+    background: var(--color-warm-sand);
+    border-radius: var(--radius-images);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
   .card-art svg { width: 150px; height: 110px; }
-  .dish-photo { width: 150px; height: 110px; object-fit: cover; border-radius: 12px; }
-  .card-body { padding: 8px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .dish-photo { width: 150px; height: 110px; object-fit: cover; border-radius: var(--radius-images); }
+  .card-body { padding: 20px 4px 0; display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
   .heart {
     width: 40px; height: 40px;
     border-radius: 50%;
-    border: 1px solid var(--n100);
-    background: var(--surface);
-    color: var(--n400);
+    border: 1px solid var(--color-cream-canvas);
+    background: rgba(244,243,231,.85);
+    color: var(--color-deep-forest);
     display: inline-flex; align-items: center; justify-content: center;
     cursor: pointer;
     flex-shrink: 0;
     transition: color .2s, background .2s, border-color .2s, transform .15s;
   }
   .heart svg { width: 20px; height: 20px; }
-  .heart:hover { color: var(--pink); border-color: var(--pink); }
+  .heart:hover { color: var(--color-deep-forest); background: var(--color-cream-canvas); }
   .heart:active { transform: scale(.9); }
-  .heart[aria-pressed="true"] { color: #fff; background: var(--pink); border-color: var(--pink); }
+  .heart[aria-pressed="true"] { color: var(--color-forest-shadow); background: var(--color-lime-glow); border-color: var(--color-lime-glow); }
   .heart[aria-pressed="true"] svg path { fill: currentColor; }
   .card .heart { position: absolute; top: 12px; right: 12px; }
   .tag {
     font-size: .8rem;
-    font-weight: var(--w-sub);
+    font-weight: var(--w-bold);
+    letter-spacing: .02em;
     padding: 2px 10px;
-    border-radius: 999px;
+    border-radius: var(--radius-badges);
+    color: var(--color-deep-forest);
   }
-  .tag.north { background: var(--purple-tint); color: var(--purple-deep); }
-  .tag.isan { background: var(--orange-tint); color: var(--orange-deep); }
-  .tag.central { background: #E6F2FF; color: #0050B3; }
-  .tag.south { background: var(--teal-tint); color: var(--teal-deep); }
+  .tag.north { background: var(--color-sage-mist); }
+  .tag.isan { background: var(--color-warm-sand); }
+  .tag.central { background: rgba(216,229,214,.5); }
+  .tag.south { background: rgba(0,71,60,.1); }
   .spice { display: flex; gap: 2px; align-items: center; }
   .spice svg { width: 16px; height: 16px; }
-  .spice .mild { font-size: .8rem; color: var(--n400); font-weight: var(--w-small); }
-  .card h3 { font-size: 1.35rem; font-weight: var(--w-title); line-height: 1.3; }
-  .en { font-size: .9rem; color: var(--n400); font-weight: var(--w-small); }
+  .spice .mild { font-size: .8rem; color: var(--color-warm-gray); font-weight: var(--w-medium); }
+  .card h3 { font-size: 1.25rem; font-weight: var(--w-bold); line-height: 1.3; }
+  .en { font-size: .9rem; color: var(--color-warm-gray); font-weight: var(--w-medium); }
   .card .en { margin-top: -6px; }
-  .desc { color: var(--n600); font-size: .98rem; }
+  .desc { color: var(--color-forest-shadow); font-size: 1rem; line-height: 1.25; }
   .empty-fav {
-    border: 1px dashed var(--n200);
-    border-radius: var(--radius);
+    border: 1px dashed var(--color-warm-gray);
+    border-radius: var(--radius-cards);
     padding: 40px 20px;
     text-align: center;
-    color: var(--n600);
-    font-weight: var(--w-small);
+    color: var(--color-slate-gray);
+    font-weight: var(--w-medium);
   }
   main { padding-bottom: 64px; }
 
@@ -270,61 +278,89 @@
   .card { cursor: pointer; }
   .detail {
     border: none;
-    border-radius: var(--radius);
+    border-radius: var(--radius-cards);
     padding: 28px;
     max-width: 480px;
     width: calc(100% - 32px);
     max-height: calc(100% - 64px);
     margin: auto;
-    background: var(--surface);
-    color: var(--n800);
-    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    background: var(--color-cream-canvas);
+    color: var(--color-forest-shadow);
+    box-shadow: 0 20px 60px rgba(14,21,14,.35);
   }
-  .detail::backdrop { background: rgba(15,23,34,.55); }
+  .detail::backdrop { background: rgba(14,21,14,.55); }
   .detail-close {
     position: absolute;
     top: 16px; right: 16px;
     width: 36px; height: 36px;
     border-radius: 50%;
-    border: 1px solid var(--n100);
-    background: var(--surface);
-    color: var(--n600);
+    border: 2px solid var(--color-deep-forest);
+    background: var(--color-cream-canvas);
+    color: var(--color-deep-forest);
     font-size: 1.4rem;
     line-height: 1;
     cursor: pointer;
     display: inline-flex; align-items: center; justify-content: center;
     transition: background .2s, color .2s;
   }
-  .detail-close:hover { background: var(--blue-tint); color: var(--blue-deep); }
-  .detail-art { display: flex; justify-content: center; margin-bottom: 16px; }
-  .detail-art svg, .detail-art .dish-photo { width: 220px; height: 160px; }
+  .detail-close:hover { background: var(--color-lime-glow); border-color: var(--color-lime-glow); }
+  .detail-art { display: flex; justify-content: center; margin-bottom: 16px; background: var(--color-sage-mist); border-radius: var(--radius-images); padding: 16px; }
+  .detail-art svg, .detail-art .dish-photo { width: 220px; height: 160px; border-radius: var(--radius-images); }
   .detail-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
-  .detail-body h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 2px; }
+  .detail-body h3 { font-size: 1.7rem; font-weight: var(--w-bold); margin-bottom: 2px; }
   .detail-body .en { margin-bottom: 10px; }
   .detail-body .desc { margin-bottom: 18px; }
-  .detail-body h4 { font-size: 1rem; font-weight: var(--w-sub); color: var(--n600); margin-bottom: 10px; }
+  .detail-body h4 { font-size: 1rem; font-weight: var(--w-bold); color: var(--color-slate-gray); margin-bottom: 10px; }
   .ingredients { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
   .ingredients li {
     font-size: .9rem;
-    font-weight: var(--w-small);
+    font-weight: var(--w-medium);
     padding: 5px 14px;
-    border-radius: 999px;
-    background: var(--n50);
-    border: 1px solid var(--n100);
-    color: var(--n600);
+    border-radius: var(--radius-buttons);
+    background: var(--color-warm-sand);
+    border: none;
+    color: var(--color-deep-forest);
   }
   @media (max-width: 520px) {
     .detail { padding: 22px; }
     .detail-art svg, .detail-art .dish-photo { width: 180px; height: 130px; }
   }
 
-  footer {
-    border-top: 1px solid var(--n100);
+  /* Member signup */
+  .member-signup { padding: 40px 0 60px; }
+  .member-card {
+    background: var(--color-warm-sand);
+    border-radius: var(--radius-cards);
+    padding: 32px;
+    text-align: center;
+  }
+  .member-card h2 { font-size: 1.6rem; font-weight: var(--w-display); margin-bottom: 8px; }
+  .member-card p { color: var(--color-slate-gray); margin-bottom: 20px; }
+  .member-form { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .member-form input {
+    flex: 1 1 200px;
+    max-width: 280px;
+    font-size: 1rem;
+    font-weight: var(--w-body);
+    padding: 9px 16px;
+    border-radius: var(--radius-inputs);
+    border: 1px solid var(--color-warm-gray);
     background: var(--surface);
+    color: var(--color-forest-shadow);
+    outline: none;
+  }
+  .member-form input:focus-visible { outline: 3px solid var(--color-deep-forest); outline-offset: 2px; }
+  .member-status { margin-top: 12px; font-weight: var(--w-medium); min-height: 1.2em; }
+  .member-status.success { color: var(--color-deep-forest); }
+  .member-status.error { color: #B0481C; }
+
+  footer {
+    border-top: 1px solid var(--color-warm-gray);
+    background: var(--color-cream-canvas);
     padding: 24px 0;
     text-align: center;
-    color: var(--n400);
-    font-weight: var(--w-small);
+    color: var(--color-warm-gray);
+    font-weight: var(--w-medium);
     font-size: .92rem;
   }
 
@@ -359,16 +395,16 @@
       <svg viewBox="0 0 320 260">
         <ellipse cx="160" cy="232" rx="120" ry="14" fill="rgba(0,0,0,.18)"/>
         <path d="M60 58c-8-22 10-30 4-50M100 50c-8-22 10-30 4-50M140 58c-8-22 10-30 4-50" stroke="rgba(255,255,255,.55)" stroke-width="6" fill="none" stroke-linecap="round" transform="translate(40 20)"/>
-        <ellipse cx="160" cy="118" rx="130" ry="30" fill="#FFB300"/>
-        <path d="M30 118h260c0 62-58 108-130 108S30 180 30 118z" fill="#fff"/>
-        <path d="M30 118h260c-2 10-5 19-9 28H39c-4-9-7-18-9-28z" fill="#E6F2FF"/>
-        <ellipse cx="160" cy="118" rx="130" ry="30" fill="none" stroke="#fff" stroke-width="6"/>
+        <ellipse cx="160" cy="118" rx="130" ry="30" fill="#E8DCC6"/>
+        <path d="M30 118h260c0 62-58 108-130 108S30 180 30 118z" fill="#F4F3E7"/>
+        <path d="M30 118h260c-2 10-5 19-9 28H39c-4-9-7-18-9-28z" fill="rgba(14,21,14,.12)"/>
+        <ellipse cx="160" cy="118" rx="130" ry="30" fill="none" stroke="#F4F3E7" stroke-width="6"/>
         <circle cx="110" cy="112" r="14" fill="#FB7A3C"/>
         <circle cx="200" cy="108" r="12" fill="#FB7A3C"/>
-        <path d="M140 104c10-10 28-10 38 0" stroke="#10A4B8" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <path d="M225 120c8-6 20-6 26 2" stroke="#10A4B8" stroke-width="7" fill="none" stroke-linecap="round"/>
-        <path d="M70 122c8-6 18-6 24 0" stroke="#10A4B8" stroke-width="7" fill="none" stroke-linecap="round"/>
-        <rect x="150" y="160" width="20" height="20" rx="4" fill="#0A84FF" transform="rotate(45 160 170)"/>
+        <path d="M140 104c10-10 28-10 38 0" stroke="#00473C" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M225 120c8-6 20-6 26 2" stroke="#00473C" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M70 122c8-6 18-6 24 0" stroke="#00473C" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <rect x="150" y="160" width="20" height="20" rx="4" fill="#E6FF55" transform="rotate(45 160 170)"/>
       </svg>
     </div>
   </div>
@@ -420,6 +456,19 @@
     <ul class="ingredients" id="detail-ingredients"></ul>
   </div>
 </dialog>
+
+<section class="member-signup" aria-label="สมัครสมาชิก">
+  <div class="wrap member-card">
+    <h2>สมัครสมาชิก</h2>
+    <p>ฝากชื่อและอีเมลไว้ รับข่าวสารเมนูใหม่ๆ จากอร่อยทั่วไทย</p>
+    <form id="member-form" class="member-form" novalidate>
+      <input type="text" id="member-name" placeholder="ชื่อ" aria-label="ชื่อ" required>
+      <input type="email" id="member-email" placeholder="อีเมล" aria-label="อีเมล" required>
+      <button type="submit" class="btn-random">สมัครสมาชิก</button>
+    </form>
+    <p class="member-status" id="member-status" aria-live="polite"></p>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">จัดทำโดย วิศวกรรีพอร์ต</div>
@@ -513,23 +562,23 @@
   function dishSvg(m, cls = '') {
     if (m.plate) {
       return `<svg class="${cls}" viewBox="0 0 150 110" aria-hidden="true">
-        <ellipse cx="75" cy="72" rx="70" ry="26" fill="#E3E8EF"/>
-        <ellipse cx="75" cy="68" rx="70" ry="26" fill="#fff" stroke="#E3E8EF" stroke-width="2"/>
+        <ellipse cx="75" cy="72" rx="70" ry="26" fill="rgba(14,21,14,.12)"/>
+        <ellipse cx="75" cy="68" rx="70" ry="26" fill="#F4F3E7" stroke="rgba(140,140,130,.4)" stroke-width="2"/>
         <ellipse cx="75" cy="64" rx="46" ry="15" fill="${m.soup}"/>
         <path d="M45 62c8-6 16-6 22 0M80 58c8-6 16-6 22 0M60 70c8-5 14-5 20 0" stroke="${m.top}" stroke-width="4" fill="none" stroke-linecap="round"/>
         <circle cx="95" cy="68" r="5" fill="#FB7A3C"/>
       </svg>`;
     }
     return `<svg class="${cls}" viewBox="0 0 150 110" aria-hidden="true">
-      <ellipse cx="75" cy="102" rx="46" ry="6" fill="#E3E8EF"/>
-      <path d="M58 22c-4-8 4-12 0-20M78 22c-4-8 4-12 0-20M98 22c-4-8 4-12 0-20" stroke="#C2CBD6" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M12 44h126c0 32-28 56-63 56S12 76 12 44z" fill="#0A84FF"/>
-      <path d="M12 44h126c-1 6-3 11-5 16H17c-2-5-4-10-5-16z" fill="#0050B3" opacity=".35"/>
+      <ellipse cx="75" cy="102" rx="46" ry="6" fill="rgba(14,21,14,.12)"/>
+      <path d="M58 22c-4-8 4-12 0-20M78 22c-4-8 4-12 0-20M98 22c-4-8 4-12 0-20" stroke="rgba(140,140,130,.5)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M12 44h126c0 32-28 56-63 56S12 76 12 44z" fill="#00473C"/>
+      <path d="M12 44h126c-1 6-3 11-5 16H17c-2-5-4-10-5-16z" fill="#0E150E" opacity=".35"/>
       <ellipse cx="75" cy="44" rx="63" ry="14" fill="${m.soup}"/>
-      <ellipse cx="75" cy="44" rx="63" ry="14" fill="none" stroke="#fff" stroke-width="3"/>
+      <ellipse cx="75" cy="44" rx="63" ry="14" fill="none" stroke="#F4F3E7" stroke-width="3"/>
       <circle cx="55" cy="42" r="6" fill="${m.top}"/>
       <circle cx="96" cy="40" r="5" fill="${m.top}"/>
-      <path d="M68 38c5-4 12-4 16 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M68 38c5-4 12-4 16 0" stroke="#F4F3E7" stroke-width="3" fill="none" stroke-linecap="round"/>
     </svg>`;
   }
 
@@ -730,6 +779,46 @@
 
   syncFavoritesUi();
   applyFilter('all');
+
+  // Member signup: insert-only into Supabase (no auth) via a publishable key scoped by RLS to inserts
+  const SUPABASE_URL = 'https://fdfqxluchdzxnsbiodqe.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_6XCXDVXieFmjjuvKYlW_Tg_dYZZ9b_2';
+  const memberForm = document.getElementById('member-form');
+  const memberStatus = document.getElementById('member-status');
+  let supabaseClient = null;
+
+  memberForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = document.getElementById('member-name').value.trim();
+    const email = document.getElementById('member-email').value.trim();
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      memberStatus.textContent = 'กรุณากรอกชื่อและอีเมลให้ถูกต้อง';
+      memberStatus.className = 'member-status error';
+      return;
+    }
+    memberStatus.textContent = 'กำลังบันทึก...';
+    memberStatus.className = 'member-status';
+    try {
+      if (!supabaseClient) {
+        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+        supabaseClient = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+      }
+      const { error } = await supabaseClient.from('members').insert({ name, email });
+      if (error) {
+        memberStatus.textContent = error.code === '23505'
+          ? 'อีเมลนี้สมัครสมาชิกแล้ว'
+          : 'เกิดข้อผิดพลาด กรุณาลองใหม่';
+        memberStatus.className = 'member-status error';
+        return;
+      }
+      memberForm.reset();
+      memberStatus.textContent = 'สมัครสมาชิกสำเร็จ ขอบคุณ';
+      memberStatus.className = 'member-status success';
+    } catch (err) {
+      memberStatus.textContent = 'เกิดข้อผิดพลาด กรุณาลองใหม่';
+      memberStatus.className = 'member-status error';
+    }
+  });
 </script>
 </body>
 </html>
