@@ -1,0 +1,30 @@
+{
+  "tool": "image_gen (built-in)",
+  "images": [
+    {
+      "id": "tai-pla",
+      "prompt": "Use case: photorealistic-natural. Create one realistic Thai food blog photograph, near-square 4:3 composition, single dish filling most of frame, elevated three-quarter angle, warm natural window light from left, beautiful authentic edible textures, speckled beige ceramic serving ware on warm wooden table, subtle navy linen at edge, softly blurred uncluttered background, matching a cohesive modern Thai menu photography series. No text, watermark, people or collage. Gaeng Tai Pla แกงไตปลา: authentic southern Thai fermented fish curry in a bowl, dark brownish spicy non-coconut broth, visible grilled fish chunks, pickled bamboo shoots, orange pumpkin chunks, cut long beans and small Thai round eggplant wedges. Rich rustic brown curry with vegetables clearly recognizable, no cream.",
+      "source": "C:\\Users\\Bill\\.codex\\generated_images\\01a0e2d9-c1c8-79f1-82d9-695466f24584\\exec-4e4ae798-9794-4c11-9254-a21393d450c5.png"
+    },
+    {
+      "id": "khao-yam",
+      "prompt": "Use case: photorealistic-natural. Create one realistic Thai food blog photograph, near-square 4:3 composition, single dish filling most of frame, elevated three-quarter angle, warm natural window light from left, beautiful authentic edible textures, speckled beige ceramic serving ware on warm wooden table, subtle navy linen at edge, softly blurred uncluttered background, matching a cohesive modern Thai menu photography series. No text, watermark, people or collage. Khao Yam ข้าวยำ: colorful authentic southern Thai rice salad on a broad ceramic plate. Cooked rice lightly tossed with brown budu dressing, toasted shredded coconut, finely ground dried shrimp, thin lemongrass rings, finely shredded makrut lime leaves, fresh bean sprouts and blue butterfly pea petals, a lime wedge; balanced rice and finely sliced fresh herbs, appetizing natural blue-purple accents. Small side cup of chili powder kept separate. No whole cooked shrimp.",
+      "source": "C:\\Users\\Bill\\.codex\\generated_images\\01a0e2d9-c1c8-79f1-82d9-695466f24584\\exec-fde41adc-f254-44c6-94e7-13ff99e41937.png"
+    },
+    {
+      "id": "gaeng-leung",
+      "prompt": "Use case: photorealistic-natural. Create one realistic Thai food blog photograph, near-square 4:3 composition, single dish filling most of frame, elevated three-quarter angle, warm natural window light from left, beautiful authentic edible textures, speckled beige ceramic serving ware on warm wooden table, subtle navy linen at edge, softly blurred uncluttered background, matching a cohesive modern Thai menu photography series. No text, watermark, people or collage. Gaeng Leung แกงเหลือง: authentic southern Thai sour yellow curry in a bowl, vivid golden yellow turmeric-based thin broth with a slight orange chili tint, fish chunks and sliced pickled bamboo shoots. Curry paste contains turmeric, dried chili, garlic, shallot, shrimp paste and tamarind. Absolutely no coconut milk or cream, not creamy, unmistakable yellow sour fish curry.",
+      "source": "C:\\Users\\Bill\\.codex\\generated_images\\01a0e2d9-c1c8-79f1-82d9-695466f24584\\exec-ebce535c-674e-41e1-88b6-e15e0aa98f71.png"
+    },
+    {
+      "id": "kua-kling",
+      "prompt": "Use case: photorealistic-natural. Create one realistic Thai food blog photograph, near-square 4:3 composition, single dish filling most of frame, elevated three-quarter angle, warm natural window light from left, beautiful authentic edible textures, speckled beige ceramic serving ware on warm wooden table, subtle navy linen at edge, softly blurred uncluttered background, matching a cohesive modern Thai menu photography series. No text, watermark, people or collage. Kua Kling คั่วกลิ้ง: authentic southern Thai dry stir-fried minced pork with southern curry paste, turmeric, fine lemongrass and galangal, fish sauce; dark reddish-brown crumbled minced meat with golden turmeric undertones, dry granular texture with no pooled sauce or broth, sprinkled with very finely shredded makrut lime leaves, served in a mound on a ceramic plate.",
+      "source": "C:\\Users\\Bill\\.codex\\generated_images\\01a0e2d9-c1c8-79f1-82d9-695466f24584\\exec-054a6020-3617-488d-a164-acccfe01dc20.png"
+    },
+    {
+      "id": "pad-sator",
+      "prompt": "Use case: photorealistic-natural. Create one realistic Thai food blog photograph, near-square 4:3 composition, single dish filling most of frame, elevated three-quarter angle, warm natural window light from left, beautiful authentic edible textures, speckled beige ceramic serving ware on warm wooden table, subtle navy linen at edge, softly blurred uncluttered background, matching a cohesive modern Thai menu photography series. No text, watermark, people or collage. Pad Sator ผัดสะตอ: authentic southern Thai stink bean stir fry with plump cooked shrimp, many clearly recognizable bright green large flat oval split stink beans (Parkia speciosa, not peas or green beans), savory shrimp paste and southern curry paste, fish sauce and palm sugar, lightly clinging reddish-brown glossy sauce, on a ceramic plate.",
+      "source": "C:\\Users\\Bill\\.codex\\generated_images\\01a0e2d9-c1c8-79f1-82d9-695466f24584\\exec-69c103e8-85bc-43d1-b7a3-9a51cdac988b.png"
+    }
+  ]
+}

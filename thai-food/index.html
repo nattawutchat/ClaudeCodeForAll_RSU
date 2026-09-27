@@ -389,7 +389,7 @@
     <div>
       <span class="eyebrow">ชวนชิมอาหารไทย 4 ภาค</span>
       <h1>อร่อยทั่วไทย</h1>
-      <p>รวม 20 เมนูขึ้นชื่อจากเหนือจรดใต้ คิดไม่ออกว่าจะกินอะไรก็กดสุ่มได้เลย</p>
+      <p>รวม 23 เมนูขึ้นชื่อจากเหนือจรดใต้ คิดไม่ออกว่าจะกินอะไรก็กดสุ่มได้เลย</p>
     </div>
     <div class="hero-art" aria-hidden="true">
       <svg viewBox="0 0 320 260">
@@ -421,7 +421,7 @@
   <section class="random" aria-label="สุ่มเมนูวันนี้">
     <div class="random-intro">
       <h2>วันนี้กินอะไรดี</h2>
-      <p>สุ่มจากทั้ง 20 เมนู กดซ้ำได้จนเจอเมนูที่ใช่</p>
+      <p>สุ่มจากทั้ง 23 เมนู กดซ้ำได้จนเจอเมนูที่ใช่</p>
       <button class="btn-random" id="btn-random" type="button">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
         สุ่มเมนูวันนี้
@@ -491,63 +491,72 @@
     { id: 'hang-lay', th: 'แกงฮังเล', en: 'Gaeng Hang Lay', region: 'north', spice: 1, soup: '#B0481C', top: '#FFB300', photo: 'images/hang-lay.png',
       ingredients: ['หมูสามชั้น', 'ผงฮังเล', 'ขิงซอย', 'กระเทียม', 'หอมแดง', 'ถั่วลิสงคั่ว', 'ซีอิ๊วดำ', 'น้ำตาลปี๊บ', 'น้ำมะขามเปียก'],
       desc: 'แกงหมูสามชั้นแบบไม่ใส่กะทิ รสเข้มจากผงฮังเล ใส่ขิงซอยและถั่วลิสง เคี่ยวจนหมูนุ่ม' },
-    { id: 'nam-prik-noom', th: 'น้ำพริกหนุ่ม', en: 'Nam Prik Noom', region: 'north', spice: 2, soup: '#D9F2F6', top: '#10A4B8', plate: true,
+    { id: 'nam-prik-noom', th: 'น้ำพริกหนุ่ม', en: 'Nam Prik Noom', region: 'north', spice: 2, soup: '#D9F2F6', top: '#10A4B8', plate: true, photo: 'images/nam-prik-noom.png',
       ingredients: ['พริกหนุ่มย่าง', 'หอมแดงย่าง', 'กระเทียมย่าง', 'เกลือ', 'กะปิ', 'ผักสดสำหรับจิ้ม', 'แคบหมู'],
       desc: 'พริกหนุ่ม หอมแดง และกระเทียมย่างไฟ นำมาโขลกรวมกัน กินกับผักนึ่งและแคบหมู' },
-    { id: 'sai-oua', th: 'ไส้อั่ว', en: 'Sai Oua', region: 'north', spice: 2, soup: '#FFE8DA', top: '#B0481C', plate: true,
+    { id: 'sai-oua', th: 'ไส้อั่ว', en: 'Sai Oua', region: 'north', spice: 2, soup: '#FFE8DA', top: '#B0481C', plate: true, photo: 'images/sai-oua.png',
       ingredients: ['หมูสับ', 'ไส้หมูสำหรับบรรจุ', 'พริกแกงไส้อั่ว', 'ตะไคร้ซอย', 'ใบมะกรูดซอย', 'ผักชี', 'เกลือ'],
       desc: 'ไส้กรอกเมืองเหนือ ยัดหมูสับคลุกพริกแกง ตะไคร้ และใบมะกรูด แล้วนำไปย่างจนหอม' },
-    { id: 'khanom-jeen-nam-ngiao', th: 'ขนมจีนน้ำเงี้ยว', en: 'Khanom Jeen Nam Ngiao', region: 'north', spice: 1, soup: '#E5484D', top: '#FFB300',
+    { id: 'khanom-jeen-nam-ngiao', th: 'ขนมจีนน้ำเงี้ยว', en: 'Khanom Jeen Nam Ngiao', region: 'north', spice: 1, soup: '#E5484D', top: '#FFB300', photo: 'images/khanom-jeen-nam-ngiao.png',
       ingredients: ['ขนมจีน', 'หมูสับ', 'กระดูกหมู', 'มะเขือเทศ', 'ดอกงิ้วแห้ง', 'ถั่วเน่าแผ่น', 'พริกแกงน้ำเงี้ยว'],
       desc: 'ขนมจีนราดน้ำเงี้ยวรสเข้ม ใส่หมูสับ กระดูกหมู มะเขือเทศ และดอกงิ้วแห้ง' },
+    { id: 'nam-prik-ong', th: 'น้ำพริกอ่อง', en: 'Nam Prik Ong', region: 'north', spice: 1, soup: '#E5484D', top: '#10A4B8', plate: true, photo: 'images/nam-prik-ong.png',
+      ingredients: ['หมูสับ', 'มะเขือเทศ', 'พริกแห้ง', 'กระเทียม', 'หอมแดง', 'กะปิ', 'เกลือ', 'น้ำปลา', 'ผักสดสำหรับจิ้ม', 'แคบหมู'],
+      desc: 'พริกแห้ง หอมแดง กระเทียม และกะปิโขลกรวมกัน ผัดกับหมูสับและมะเขือเทศจนข้น รสเปรี้ยวอมหวาน กินกับผักสดและแคบหมู' },
     // Isan
-    { id: 'som-tam', th: 'ส้มตำ', en: 'Som Tam', region: 'isan', spice: 3, soup: '#D9F2F6', top: '#10A4B8', plate: true,
+    { id: 'som-tam', th: 'ส้มตำ', en: 'Som Tam', region: 'isan', spice: 3, soup: '#D9F2F6', top: '#10A4B8', plate: true, photo: 'images/som-tam.png',
       ingredients: ['มะละกอดิบสับเส้น', 'พริกขี้หนู', 'กระเทียม', 'มะเขือเทศ', 'ถั่วฝักยาว', 'มะนาว', 'น้ำปลา', 'น้ำตาลปี๊บ', 'กุ้งแห้ง', 'ถั่วลิสงคั่ว'],
       desc: 'มะละกอดิบสับเส้นตำกับพริก กระเทียม มะนาว น้ำปลา และมะเขือเทศ รสเปรี้ยวเผ็ดสดชื่น' },
-    { id: 'larb', th: 'ลาบ', en: 'Larb', region: 'isan', spice: 3, soup: '#C2CBD6', top: '#10A4B8', plate: true,
+    { id: 'larb', th: 'ลาบ', en: 'Larb', region: 'isan', spice: 3, soup: '#C2CBD6', top: '#10A4B8', plate: true, photo: 'images/larb.png',
       ingredients: ['เนื้อสับ (หมูหรือไก่)', 'ข้าวคั่ว', 'พริกป่น', 'น้ำปลา', 'มะนาว', 'หอมแดงซอย', 'ต้นหอม', 'สะระแหน่'],
       desc: 'เนื้อสับคลุกข้าวคั่ว พริกป่น มะนาว น้ำปลา และสมุนไพรอย่างสะระแหน่ กินกับข้าวเหนียว' },
-    { id: 'gai-yang', th: 'ไก่ย่าง', en: 'Gai Yang', region: 'isan', spice: 0, soup: '#FFF1CC', top: '#B0481C', plate: true,
+    { id: 'gai-yang', th: 'ไก่ย่าง', en: 'Gai Yang', region: 'isan', spice: 0, soup: '#FFF1CC', top: '#B0481C', plate: true, photo: 'images/gai-yang.png',
       ingredients: ['ไก่ทั้งตัวหรือน่องไก่', 'กระเทียม', 'รากผักชี', 'พริกไทย', 'ซีอิ๊วขาว', 'น้ำปลา', 'น้ำตาลปี๊บ'],
       desc: 'ไก่หมักกระเทียม รากผักชี และพริกไทย ย่างบนเตาถ่าน กินคู่ข้าวเหนียวและน้ำจิ้มแจ่ว' },
-    { id: 'tom-saep', th: 'ต้มแซ่บ', en: 'Tom Saep', region: 'isan', spice: 3, soup: '#FFE8DA', top: '#10A4B8',
+    { id: 'tom-saep', th: 'ต้มแซ่บ', en: 'Tom Saep', region: 'isan', spice: 3, soup: '#FFE8DA', top: '#10A4B8', photo: 'images/tom-saep.png',
       ingredients: ['กระดูกหมูอ่อน', 'ข่า', 'ตะไคร้', 'ใบมะกรูด', 'พริกป่น', 'น้ำปลาร้า', 'มะนาว', 'ผักชี', 'ต้นหอม'],
       desc: 'ต้มรสเปรี้ยวเผ็ด หอมข่า ตะไคร้ ใบมะกรูด เผ็ดจากพริกป่น นิยมใส่กระดูกหมูอ่อน' },
-    { id: 'soup-nor-mai', th: 'ซุปหน่อไม้', en: 'Soup Nor Mai', region: 'isan', spice: 2, soup: '#10A4B8', top: '#FFF1CC', plate: true,
+    { id: 'soup-nor-mai', th: 'ซุปหน่อไม้', en: 'Soup Nor Mai', region: 'isan', spice: 2, soup: '#10A4B8', top: '#FFF1CC', plate: true, photo: 'images/soup-nor-mai.png',
       ingredients: ['หน่อไม้ต้มฉีกฝอย', 'น้ำใบย่านาง', 'พริกป่น', 'ข้าวคั่ว', 'งาคั่ว', 'น้ำปลาร้า', 'ผักชีลาว'],
       desc: 'หน่อไม้ต้มฉีกฝอย คลุกน้ำใบย่านาง พริกป่น ข้าวคั่ว และงาคั่ว' },
     // Central
     { id: 'tom-yum-goong', th: 'ต้มยำกุ้ง', en: 'Tom Yum Goong', region: 'central', spice: 2, soup: '#FB7A3C', top: '#F2589B', photo: 'images/tom-yum-goong.png',
       ingredients: ['กุ้ง', 'ข่า', 'ตะไคร้', 'ใบมะกรูด', 'พริกขี้หนู', 'มะนาว', 'น้ำปลา', 'เห็ดฟาง', 'น้ำพริกเผา', 'ผักชี'],
       desc: 'ต้มกุ้งกับข่า ตะไคร้ ใบมะกรูด พริก และมะนาว ได้รสเปรี้ยว เผ็ด หอมสมุนไพรครบในชามเดียว' },
-    { id: 'green-curry', th: 'แกงเขียวหวาน', en: 'Green Curry', region: 'central', spice: 2, soup: '#10A4B8', top: '#8B5CF6',
+    { id: 'green-curry', th: 'แกงเขียวหวาน', en: 'Green Curry', region: 'central', spice: 2, soup: '#10A4B8', top: '#8B5CF6', photo: 'images/green-curry.png',
       ingredients: ['พริกแกงเขียวหวาน', 'กะทิ', 'เนื้อไก่', 'มะเขือเปราะ', 'มะเขือพวง', 'ใบโหระพา', 'ใบมะกรูด', 'น้ำปลา', 'น้ำตาลปี๊บ'],
       desc: 'แกงกะทิกับพริกแกงเขียว ใส่มะเขือเปราะ ใบโหระพา นิยมใช้ไก่ ทานคู่ข้าวสวยหรือขนมจีน' },
     { id: 'pad-thai', th: 'ผัดไทย', en: 'Pad Thai', region: 'central', spice: 0, soup: '#FFF1CC', top: '#FB7A3C', plate: true, photo: 'images/pad-thai.png',
       ingredients: ['เส้นจันท์', 'กุ้งสด', 'เต้าหู้แข็ง', 'กุ้งแห้ง', 'ไข่ไก่', 'ถั่วงอก', 'กุยช่าย', 'ถั่วลิสงคั่วป่น', 'น้ำมะขามเปียก', 'หัวไชโป๊ว'],
       desc: 'เส้นจันท์ผัดซอสมะขามเปียกและน้ำตาลปี๊บ ใส่เต้าหู้ กุ้งแห้ง ไข่ ถั่วงอก กุยช่าย โรยถั่วลิสง' },
-    { id: 'tom-kha-gai', th: 'ต้มข่าไก่', en: 'Tom Kha Gai', region: 'central', spice: 1, soup: '#FFF1CC', top: '#10A4B8',
+    { id: 'tom-kha-gai', th: 'ต้มข่าไก่', en: 'Tom Kha Gai', region: 'central', spice: 1, soup: '#FFF1CC', top: '#10A4B8', photo: 'images/tom-kha-gai.png',
       ingredients: ['เนื้อไก่', 'กะทิ', 'ข่า', 'ตะไคร้', 'ใบมะกรูด', 'เห็ดฟาง', 'มะนาว', 'น้ำปลา', 'พริกขี้หนูบุบ', 'ผักชี'],
       desc: 'ต้มไก่ในกะทิกับข่า ตะไคร้ และใบมะกรูด รสเปรี้ยว เค็ม มัน หอมข่า' },
-    { id: 'panang', th: 'พะแนง', en: 'Panang', region: 'central', spice: 1, soup: '#FB7A3C', top: '#10A4B8', plate: true,
+    { id: 'panang', th: 'พะแนง', en: 'Panang', region: 'central', spice: 1, soup: '#FB7A3C', top: '#10A4B8', plate: true, photo: 'images/panang.png',
       ingredients: ['พริกแกงพะแนง', 'กะทิ', 'เนื้อสัตว์ (หมูหรือไก่)', 'ใบมะกรูดซอย', 'น้ำปลา', 'น้ำตาลปี๊บ', 'ถั่วลิสงป่น'],
       desc: 'เนื้อสัตว์เคี่ยวกับกะทิและพริกแกงพะแนงจนน้ำขลุกขลิก โรยใบมะกรูดซอย รสหวานมัน' },
+    { id: 'massaman', th: 'แกงมัสมั่น', en: 'Massaman Curry', region: 'central', spice: 1, soup: '#8A6212', top: '#FFB300', photo: 'images/massaman.png',
+      ingredients: ['เนื้อวัวหรือไก่', 'พริกแกงมัสมั่น', 'กะทิ', 'มันฝรั่ง', 'หอมแดง', 'ถั่วลิสงคั่ว', 'น้ำมะขามเปียก', 'น้ำตาลปี๊บ', 'น้ำปลา', 'ใบกระวาน'],
+      desc: 'แกงกะทิรสหวานมันออกเปรี้ยวเค็มเล็กน้อย เคี่ยวเนื้อกับมันฝรั่งและถั่วลิสงจนเปื่อยนุ่ม หอมเครื่องเทศแบบมัสมั่น' },
     // South
-    { id: 'tai-pla', th: 'แกงไตปลา', en: 'Gaeng Tai Pla', region: 'south', spice: 3, soup: '#8A6212', top: '#10A4B8',
+    { id: 'tai-pla', th: 'แกงไตปลา', en: 'Gaeng Tai Pla', region: 'south', spice: 3, soup: '#8A6212', top: '#10A4B8', photo: 'images/tai-pla.png',
       ingredients: ['ไตปลาหมัก', 'พริกแกงไตปลา', 'ปลาหรือกุ้ง', 'หน่อไม้ดอง', 'ฟักทอง', 'ถั่วฝักยาว', 'มะเขือเปราะ'],
       desc: 'แกงรสจัดจากไตปลาหมัก ใส่ผักหลายชนิดอย่างหน่อไม้และฟักทอง เผ็ดร้อนแบบปักษ์ใต้' },
-    { id: 'khao-yam', th: 'ข้าวยำ', en: 'Khao Yam', region: 'south', spice: 0, soup: '#EEE7FD', top: '#10A4B8', plate: true,
+    { id: 'khao-yam', th: 'ข้าวยำ', en: 'Khao Yam', region: 'south', spice: 0, soup: '#EEE7FD', top: '#10A4B8', plate: true, photo: 'images/khao-yam.png',
       ingredients: ['ข้าวสวย', 'น้ำบูดู', 'มะพร้าวคั่ว', 'กุ้งแห้งป่น', 'ตะไคร้ซอย', 'ใบมะกรูดซอย', 'ถั่วงอก', 'ดอกอัญชัน', 'มะนาว', 'พริกป่น'],
       desc: 'ข้าวคลุกน้ำบูดู กับผักสดซอย มะพร้าวคั่ว และกุ้งแห้งป่น พริกป่นแยกให้เติมเองตามชอบ' },
-    { id: 'gaeng-leung', th: 'แกงเหลือง', en: 'Gaeng Leung', region: 'south', spice: 3, soup: '#FFB300', top: '#10A4B8',
+    { id: 'gaeng-leung', th: 'แกงเหลือง', en: 'Gaeng Leung', region: 'south', spice: 3, soup: '#FFB300', top: '#10A4B8', photo: 'images/gaeng-leung.png',
       ingredients: ['ขมิ้นสด', 'พริกแห้ง', 'กระเทียม', 'หอมแดง', 'กะปิ', 'ปลาหรือกุ้ง', 'หน่อไม้ดองหรือมะละกอ', 'น้ำมะขามเปียก'],
       desc: 'แกงส้มแบบใต้ สีเหลืองจากขมิ้น ไม่ใส่กะทิ รสเปรี้ยวเผ็ดเค็ม มักใส่ปลากับหน่อไม้ดองหรือมะละกอ' },
-    { id: 'kua-kling', th: 'คั่วกลิ้ง', en: 'Kua Kling', region: 'south', spice: 3, soup: '#B0481C', top: '#10A4B8', plate: true,
+    { id: 'kua-kling', th: 'คั่วกลิ้ง', en: 'Kua Kling', region: 'south', spice: 3, soup: '#B0481C', top: '#10A4B8', plate: true, photo: 'images/kua-kling.png',
       ingredients: ['เนื้อสับ (หมูหรือวัว)', 'พริกแกงคั่วกลิ้ง', 'ขมิ้น', 'ตะไคร้', 'ข่า', 'ใบมะกรูดซอย', 'น้ำปลา'],
       desc: 'เนื้อสับคั่วกับพริกแกงใต้ที่มีขมิ้นจนแห้ง หอมใบมะกรูด เผ็ดร้อนจัดจ้าน' },
-    { id: 'pad-sator', th: 'ผัดสะตอ', en: 'Pad Sator', region: 'south', spice: 2, soup: '#10A4B8', top: '#F2589B', plate: true,
+    { id: 'pad-sator', th: 'ผัดสะตอ', en: 'Pad Sator', region: 'south', spice: 2, soup: '#10A4B8', top: '#F2589B', plate: true, photo: 'images/pad-sator.png',
       ingredients: ['สะตอ', 'กะปิ', 'พริกแกง', 'กุ้งหรือหมูสามชั้น', 'น้ำปลา', 'น้ำตาลปี๊บ'],
-      desc: 'สะตอผัดกับกะปิและพริกแกง นิยมใส่กุ้งหรือหมู กลิ่นหอมเฉพาะตัวของสะตอ' }
+      desc: 'สะตอผัดกับกะปิและพริกแกง นิยมใส่กุ้งหรือหมู กลิ่นหอมเฉพาะตัวของสะตอ' },
+    { id: 'moo-hong', th: 'หมูฮ้อง', en: 'Moo Hong', region: 'south', spice: 0, soup: '#B0481C', top: '#FFB300', plate: true, photo: 'images/moo-hong.png',
+      ingredients: ['หมูสามชั้น', 'กระเทียม', 'รากผักชี', 'พริกไทย', 'ซีอิ๊วดำ', 'น้ำตาลปี๊บ', 'อบเชย', 'โป๊ยกั๊ก', 'ไข่ต้ม'],
+      desc: 'หมูสามชั้นเคี่ยวซีอิ๊วดำและน้ำตาลปี๊บกับกระเทียม รากผักชี และเครื่องเทศจนนุ่มเข้มสีน้ำตาล อาหารขึ้นชื่อของภูเก็ต' }
   ];
 
   const MENU_BY_ID = Object.fromEntries(MENUS.map(m => [m.id, m]));
